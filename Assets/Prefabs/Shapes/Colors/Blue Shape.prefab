@@ -92,7 +92,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 924201905821712133}
-  - component: {fileID: 2850333174678072680}
   - component: {fileID: 1880642591697173387}
   m_Layer: 0
   m_Name: Blue Shape
@@ -117,20 +116,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2850333174678072680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8938841640970803674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c79fb69e49ca42f44a0220bfb9b94351, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blueShapeSpeed: 50
-  blueExplostion: {fileID: 7045001805100220132, guid: ed541ba1158cfc04bb8f047b6d5cf792, type: 3}
 --- !u!135 &1880642591697173387
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -142,5 +127,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}

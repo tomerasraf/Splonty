@@ -8,10 +8,12 @@ public class SaberCollision : MonoBehaviour
     {
         if (other.CompareTag("Shield")) {
             EventManager.current.ShieldHit();
+            EventManager.current.ShapeHit();
         }
 
         if (other.CompareTag("Boomb Shape")) {
             Destroy(other.gameObject);
+            EventManager.current.ShapeHit();
             EventManager.current.BombHit();
         }
 

@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    static public EventManager current;
+    [Header("Data")]
+    [SerializeField] ShapeData _shapeData;
 
+    static public EventManager current;
     private void Awake()
     {
         current = this;
@@ -21,25 +23,36 @@ public class EventManager : MonoBehaviour
     {
         onEndLevel?.Invoke();
     }
+    
+    public event Action onGameOver;
+    public void GameOver()
+    {
+        onGameOver?.Invoke();
+    }
 
     public event Action onShapeHit;
     public void ShapeHit()
     {
         onShapeHit?.Invoke();
     }
-    public event Action onBombHit;
+    public event Action<int> onBombHit;
     public void BombHit()
     {
-        onShapeHit?.Invoke();
+        onBombHit?.Invoke(_shapeData.boombShapeDamage);
     }
 
-    public event Action onShieldHit;
+    public event Action<int> onShieldHit;
     public void ShieldHit() {
-        onShieldHit?.Invoke();
+        onShieldHit?.Invoke(_shapeData.sheildShapeDamage);
+    } 
+    
+    public event Action<int> onShapeMiss;
+    public void ShapeMiss() {
+        onShapeMiss?.Invoke(_shapeData.missShapeDamage);
     }
-
-
-
-
-
+    
+    public event Action<int> onWrongShapeHit;
+    public void WrongShapeHit() {
+        onWrongShapeHit?.Invoke(_shapeData.colorShapeDamage);
+    }
 }
