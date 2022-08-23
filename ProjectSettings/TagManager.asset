@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Blue Saber
+  - Red Saber
+  - Red Shape
+  - Blue Shape
+  - Shield
+  - Sheild Shape
+  - RedHandle
+  - BlueHandle
+  - Boomb Shape
+  - Ground
+  - Saber
+  - End Level
   layers:
   - Default
   - TransparentFX
