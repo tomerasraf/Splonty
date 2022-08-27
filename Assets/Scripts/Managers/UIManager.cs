@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class UIManager : MonoBehaviour
 {
     [Header("Smooth UI Vars")]
@@ -43,6 +42,7 @@ public class UIManager : MonoBehaviour
         ProgressBarUpdater();
     }
 
+    #region Events
     private void OnEnable()
     {
         EventManager.current.onStartGameTouch += UIDisplayOff;
@@ -68,16 +68,71 @@ public class UIManager : MonoBehaviour
         EventManager.current.onFeedback -= PlayerFeedback;
         EventManager.current.onComboUIUpdater -= ComboUIupdater;
     }
+    #endregion
 
-    private void ProgressBarUpdater() {
-        StartCoroutine(ProgressBar());
-    }
-
+    #region Health Bar
     private void HealthBarUpdater()
     {
         StartCoroutine(HealthBar());
     }
 
+    IEnumerator HealthBar()
+    {
+        while (healthBarFiller.fillAmount != _gameData.healthPoints / 100)
+        {
+            healthBarFiller.fillAmount = Mathf.Lerp(healthBarFiller.fillAmount, _gameData.healthPoints / 100, healthBarSmoothChange * Time.deltaTime);
+            yield return null;
+        }
+        yield return null;
+    }
+
+
+    #endregion
+
+    #region Progress Bar
+    private void ProgressBarUpdater()
+    {
+        StartCoroutine(ProgressBar());
+    }
+    IEnumerator ProgressBar()
+    {
+        while (true)
+        {
+            progressBarFiller.fillAmount = _gameData.levelProgress;
+
+            int progress = (int)_gameData.levelProgress;
+
+            levelProgressPrecentege.text = progress.ToString();
+            yield return null;
+        }
+    }
+
+    #endregion
+
+    #region Combo UI
+    private void ComboUIupdater()
+    {
+        comboText.text = $"Combo X {_gameData.comboHits.ToString()}";
+
+        comboText.DORewind();
+
+        comboText.DOFade(0, 0).OnComplete(() =>
+        {
+            comboText.gameObject.SetActive(true);
+            comboText.DOFade(1, 0.5f).OnComplete(() =>
+            {
+                comboText.DOFade(0, 1).OnComplete(() =>
+                {
+                    comboText.gameObject.SetActive(false);
+                    comboText.DOFade(1, 0);
+                });
+            });
+        });
+    }
+
+    #endregion
+
+    #region DisplayUI
     private void UIDisplayOff()
     {
         menuCanvas.SetActive(false);
@@ -98,33 +153,24 @@ public class UIManager : MonoBehaviour
         reviveCanvas.SetActive(true);
         gameplayCanvas.SetActive(false);
     }
+    #endregion
+
+    #region Level Summary
+    private void LevelSummaryUIUpdater()
+    {
+        summaryScoreText.text = _gameData.score.ToString();
+        summaryComboText.text = _gameData.highestCombo.ToString();
+    }
+
+    #endregion
+
+    #region Score UI
     private void ScoreUpdater()
     {
         scoreText.text = _gameData.score.ToString();
     }
-
-    private void ComboUIupdater()
-    {
-        comboText.text = $"Combo X {_gameData.comboHits.ToString()}";
-
-        comboText.DORewind();
-
-        comboText.DOFade(0, 0).OnComplete(() =>
-        {
-            comboText.gameObject.SetActive(true);
-            comboText.DOFade(1, 0.5f).OnComplete(() =>
-            {
-                comboText.DOFade(0, 1).OnComplete(() =>
-                {
-                    comboText.gameObject.SetActive(false);
-                    comboText.DOFade(1, 0);
-                });
-            });
-        });
-    }
     private void PlayerFeedback(int feedbackIndex)
     {
-
         images[feedbackIndex].transform.DORewind();
         images[feedbackIndex].transform.DOScale(0, 0).OnComplete(() =>
         {
@@ -139,39 +185,13 @@ public class UIManager : MonoBehaviour
             });
         });
     }
+    #endregion
 
-    private void LevelSummaryUIUpdater()
-    {
-        summaryScoreText.text = _gameData.score.ToString();
-        summaryComboText.text = _gameData.highestCombo.ToString();
-    }
-
-
+    #region MenuUI
     IEnumerator RotatePointer()
     {
         pointer.DOShapeCircle(pointer.anchoredPosition, 360, 3, true).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         yield return null;
     }
-    IEnumerator HealthBar()
-    {
-        while (healthBarFiller.fillAmount != _gameData.healthPoints / 100)
-        {
-            healthBarFiller.fillAmount = Mathf.Lerp(healthBarFiller.fillAmount, _gameData.healthPoints / 100, healthBarSmoothChange * Time.deltaTime);
-            yield return null;
-        }
-        yield return null;
-    }
-
-    IEnumerator ProgressBar()
-    {
-        while (true)
-        {
-            progressBarFiller.fillAmount = _gameData.levelProgress; 
-
-            int progress = (int)_gameData.levelProgress;
-
-            levelProgressPrecentege.text = progress.ToString();
-            yield return null;
-        }
-    }
+    #endregion
 }

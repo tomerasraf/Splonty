@@ -13,7 +13,6 @@ public class PlayerCombo : MonoBehaviour
         EventManager.current.onBombHit += ResetCombo;
         EventManager.current.onShieldHit += ResetCombo;
     }
-
     private void OnDisable()
     {
         EventManager.current.onShapeHit -= ComboCounter;

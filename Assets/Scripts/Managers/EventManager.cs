@@ -98,4 +98,8 @@ public class EventManager : MonoBehaviour
         onGameOver?.Invoke();
     }
     #endregion
+
+    #region Sound Events
+
+    #endregion
 }

@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SaberCollision : MonoBehaviour
 {
+    [SerializeField] private AudioClip[] _clip;
 
     [Header("Data")]
     [SerializeField] ScoreData _scoreData;
@@ -11,6 +10,10 @@ public class SaberCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Shield")) {
+
+            int random = Random.Range(0, 3);
+            SoundManager.Instance.PlaySound(_clip[random]);
+
             EventManager.current.ShapeHit();
             EventManager.current.ShieldHit();
             EventManager.current.PlayerGetScore(_scoreData.sheildShapePoints);
@@ -18,6 +21,9 @@ public class SaberCollision : MonoBehaviour
         }
 
         if (other.CompareTag("Boomb Shape")) {
+            int random = Random.Range(0, 3);
+            SoundManager.Instance.PlaySound(_clip[random]);
+
             Destroy(other.gameObject);
             EventManager.current.ShapeHit();
             EventManager.current.BombHit();

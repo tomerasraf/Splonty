@@ -2,6 +2,9 @@
 
 public class RedSaberCollision : MonoBehaviour
 {
+
+    [SerializeField] private AudioClip[] _clip;
+
     [Header("Data")]
     [SerializeField] ScoreData _scoreData;
 
@@ -12,6 +15,8 @@ public class RedSaberCollision : MonoBehaviour
     {
         if (other.CompareTag("Red Shape"))
         {
+            int random = Random.Range(0, 3);
+            SoundManager.Instance.PlaySound(_clip[random]);
             Destroy(Instantiate(redExplostion, other.transform.position, Quaternion.identity), 2);
             Destroy(other.gameObject);
             EventManager.current.ShapeHit();
