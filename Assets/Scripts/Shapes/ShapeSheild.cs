@@ -23,7 +23,7 @@ public class ShapeSheild : MonoBehaviour
             if (hitCollider.CompareTag("Red Saber") || hitCollider.CompareTag("Blue Saber"))
             {
                 Destroy(gameObject);
-            }   
+            }
         }
     }
 
@@ -47,7 +47,7 @@ public class ShapeSheild : MonoBehaviour
         {
             HitDetector();
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveSpeed * Time.deltaTime);
-            transform.Rotate(transform.rotation.x, rotationSpeed , transform.rotation.z);
+            transform.Rotate(transform.rotation.x, rotationSpeed, transform.rotation.z);
             yield return null;
         }
 

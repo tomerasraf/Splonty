@@ -4,10 +4,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] ShapeData _shapeData;
     [SerializeField] GameData _gameData;
 
+    [Header("Objects")]
     [SerializeField] GameObject level1ParentObject;
+
+    [Header("Transforms")]
+    [SerializeField] Transform lightSaber;
+    [SerializeField] Transform endLevelCollider;
+
+    [Header("Vars")]
     [SerializeField] float levelSpeed;
 
     private void Awake()
@@ -20,36 +26,23 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(MoveLevel());
         StartCoroutine(CountGameTime());
+        StartCoroutine(LevelProgress());
+    }
+
+    private void GameOver()
+    {
+        StopAllCoroutines();
     }
 
     #region EventCallers
     private void OnEnable()
     {
         EventManager.current.onStartGameTouch += StartGame;
-        EventManager.current.onWrongShapeHit += PlayerGettingHit;
-        EventManager.current.onBombHit += PlayerGettingHit;
-        EventManager.current.onShieldHit += PlayerGettingHit;
-        EventManager.current.onShapeHit += PlayerIncreaseHP;
+        EventManager.current.onGameOver += GameOver;
     }
-
-    private void PlayerIncreaseHP() {
-        if (_gameData.healthPoints > 95) { return; }
-
-        _gameData.healthPoints += 5;
-    }
-
-    private void PlayerGettingHit (int damage)
-    {
-        if (_gameData.healthPoints <= 0) {
-            EventManager.current.GameOver();
-            return;
-        }
-
-        _gameData.healthPoints -= damage;
-    }
-
     private void OnDisable()
     {
+        EventManager.current.onGameOver -= GameOver;
         EventManager.current.onStartGameTouch -= StartGame;
     }
 
@@ -72,6 +65,16 @@ public class GameManager : MonoBehaviour
                 level1ParentObject.transform.position.x,
                 level1ParentObject.transform.position.y,
                 level1ParentObject.transform.position.z - levelSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator LevelProgress()
+    {
+        while (true)
+        {
+            _gameData.levelProgress = ((endLevelCollider.position.z - lightSaber.position.z) * (-1)) / 10;
+
             yield return null;
         }
     }
