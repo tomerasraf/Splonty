@@ -8,7 +8,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _effectSource;
 
-    private bool _isPlaying = false;
+    [SerializeField] float chocker;
+
+    bool _isPlaying = false;
 
     private void Awake()
     {
@@ -31,6 +33,21 @@ public class SoundManager : MonoBehaviour
 
     public void PlayOneShotSound(AudioClip clip)
     {
-        _effectSource.PlayOneShot(clip);
+        StartCoroutine(SoundChocke(clip));
+    }
+
+    IEnumerator SoundChocke(AudioClip clip) {
+
+        if (!_isPlaying) {
+            _effectSource.PlayOneShot(clip);
+        }
+
+        _isPlaying = true;
+
+        yield return new WaitForSeconds(chocker);
+
+        _isPlaying = false;
+
+        yield return null;
     }
 }

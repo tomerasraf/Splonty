@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 8886298681873006207}
   m_Layer: 0
   m_Name: Red Shape (3)
-  m_TagString: Parallel Red Shape
+  m_TagString: Red Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 8886298681792248426}
   m_Layer: 0
   m_Name: Red Shape (4)
-  m_TagString: Parallel Red Shape
+  m_TagString: Red Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 8886298681951933683}
   m_Layer: 0
   m_Name: Red Shape (6)
-  m_TagString: Parallel Red Shape
+  m_TagString: Red Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 2572765908165087743}
   m_Layer: 0
   m_Name: Blue Shape (2)
-  m_TagString: Parallel Blue Shape
+  m_TagString: Blue Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 2572765908355405895}
   m_Layer: 0
   m_Name: Blue Shape (5)
-  m_TagString: Parallel Blue Shape
+  m_TagString: Blue Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 2572765907501782217}
   m_Layer: 0
   m_Name: Blue Shape (3)
-  m_TagString: Parallel Blue Shape
+  m_TagString: Blue Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
