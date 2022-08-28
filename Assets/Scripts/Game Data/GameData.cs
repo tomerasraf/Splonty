@@ -5,7 +5,8 @@ public class GameData : ScriptableObject
 {
     [Header("Player Data")]
     public float healthPoints = 0;
-    public float levelProgress = 0;
+    public float currentLevelProgress = 0;
+    public float fullLevelDistance = 0;
     public int coins = 0;
     public int score = 0;
     public int highestScore = 0;
@@ -24,7 +25,7 @@ public class GameData : ScriptableObject
         gameplayTime = 0;
         comboHits = 0;
         score = 0;
-        levelProgress = 0;
+        currentLevelProgress = 0;
     }
 }
 

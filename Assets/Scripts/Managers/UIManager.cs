@@ -96,13 +96,14 @@ public class UIManager : MonoBehaviour
     }
     IEnumerator ProgressBar()
     {
+ 
         while (true)
         {
-            progressBarFiller.fillAmount = _gameData.levelProgress;
+            progressBarFiller.fillAmount = Mathf.InverseLerp(_gameData.fullLevelDistance, 0f , _gameData.currentLevelProgress);
 
-            int progress = (int)_gameData.levelProgress;
+            int percentageToInt = Mathf.CeilToInt(progressBarFiller.fillAmount * 100);
 
-            levelProgressPrecentege.text = progress.ToString();
+            levelProgressPrecentege.text = $"{percentageToInt.ToString()}%" ;
             yield return null;
         }
     }
@@ -112,7 +113,7 @@ public class UIManager : MonoBehaviour
     #region Combo UI
     private void ComboUIupdater()
     {
-        comboText.text = $"Combo X {_gameData.comboHits.ToString()}";
+        comboText.text = $"Combo X {_gameData.comboHits.ToString("n0")}";
 
         comboText.DORewind();
 

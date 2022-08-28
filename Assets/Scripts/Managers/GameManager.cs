@@ -71,9 +71,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LevelProgress()
     {
+        _gameData.fullLevelDistance = (endLevelCollider.position - lightSaber.position).sqrMagnitude;
+
         while (true)
         {
-            _gameData.levelProgress = ((endLevelCollider.position.z - lightSaber.position.z) * (-1)) / 10;
+            if (endLevelCollider != null)
+            {
+                _gameData.currentLevelProgress = (endLevelCollider.position - lightSaber.position).sqrMagnitude;
+            }
 
             yield return null;
         }

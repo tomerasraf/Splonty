@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -6,10 +7,13 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _effectSource;
-    
+
+    private bool _isPlaying = false;
+
     private void Awake()
     {
-        if (Instance == null) {
+        if (Instance == null)
+        {
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -19,8 +23,19 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(AudioClip clip) {
-        _effectSource.PlayOneShot(clip);
+    private void OnDisable()
+    {
+
     }
 
+    private void Update()
+    {
+
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        _effectSource.clip = clip;
+        _effectSource.Play();
+    }
 }
