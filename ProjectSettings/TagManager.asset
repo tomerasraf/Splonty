@@ -16,6 +16,8 @@ TagManager:
   - Ground
   - Saber
   - End Level
+  - Parallel Blue Shape
+  - Parallel Red Shape
   layers:
   - Default
   - TransparentFX

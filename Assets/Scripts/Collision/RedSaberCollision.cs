@@ -16,7 +16,7 @@ public class RedSaberCollision : MonoBehaviour
         if (other.CompareTag("Red Shape"))
         {
             int random = Random.Range(0, 3);
-            SoundManager.Instance.PlaySound(_clip[random]);
+            SoundManager.Instance.PlayOneShotSound(_clip[random]);
             Destroy(Instantiate(redExplostion, other.transform.position, Quaternion.identity), 2);
             Destroy(other.gameObject);
             EventManager.current.ShapeHit();
@@ -27,6 +27,16 @@ public class RedSaberCollision : MonoBehaviour
         {
             EventManager.current.WrongShapeHit();
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Parallel Red Shape"))
+        {
+            int random = Random.Range(0, 3);
+            SoundManager.Instance.PlaySound(_clip[random]);
+            Destroy(Instantiate(redExplostion, other.transform.position, Quaternion.identity), 2);
+            Destroy(other.gameObject);
+            EventManager.current.ShapeHit();
+            EventManager.current.PlayerGetScore(_scoreData.colorShapePoints);
         }
     }
 

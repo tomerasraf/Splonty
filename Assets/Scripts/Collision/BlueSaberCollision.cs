@@ -21,6 +21,15 @@ public class BlueSaberCollision : MonoBehaviour
         if (other.CompareTag("Blue Shape"))
         {
             int random = Random.Range(0, 3);
+            SoundManager.Instance.PlayOneShotSound(_clip[random]);
+            Destroy(Instantiate(blueExplostion, other.transform.position, Quaternion.identity), 2);
+            Destroy(other.gameObject);
+            EventManager.current.ShapeHit();
+            EventManager.current.PlayerGetScore(_scoreData.colorShapePoints);
+        }
+
+        if (other.CompareTag("Parallel Blue Shape")) {
+            int random = Random.Range(0, 3);
             SoundManager.Instance.PlaySound(_clip[random]);
             Destroy(Instantiate(blueExplostion, other.transform.position, Quaternion.identity), 2);
             Destroy(other.gameObject);

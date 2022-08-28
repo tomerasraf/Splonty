@@ -23,19 +23,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-
-    }
-
-    private void Update()
-    {
-
-    }
-
     public void PlaySound(AudioClip clip)
     {
         _effectSource.clip = clip;
         _effectSource.Play();
+    }
+
+    public void PlayOneShotSound(AudioClip clip)
+    {
+        _effectSource.PlayOneShot(clip);
     }
 }
