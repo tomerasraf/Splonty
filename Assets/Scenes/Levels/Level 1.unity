@@ -2728,7 +2728,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1aa4dadb53149ae468bd571d0e6ae2c3, type: 2}
     - target: {fileID: 1368346858185318106, guid: d743103409950c5458208b1d1809d7f1, type: 3}
       propertyPath: levelSpeed
-      value: 90
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1368346858185318106, guid: d743103409950c5458208b1d1809d7f1, type: 3}
       propertyPath: lightSaber
