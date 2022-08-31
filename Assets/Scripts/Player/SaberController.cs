@@ -121,16 +121,16 @@ public class SaberController : MonoBehaviour
                 GrabHandle(hit);
             }
 
-            /*if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) {
-              
+          /*  if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+            {
                 rb.AddTorque(0, 100, 0, ForceMode.Impulse);
-            }*/
+            }
+          */
         }
     }
 
     void GrabHandle(RaycastHit hit)
     {
-
         if (hit.transform.name == "Ground")
         {
             Vector3 newHitPoint = new Vector3(hit.point.x, 0, hit.point.z);
@@ -138,6 +138,7 @@ public class SaberController : MonoBehaviour
             Vector3 newDiraction = Vector3.RotateTowards(transform.forward, newHitPoint, saberSpeed * Time.deltaTime, 0.0f);
             //Destroy(Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), hit.point, Quaternion.identity), 2f);
             Debug.DrawRay(transform.position, newDiraction, Color.red);
+
             transform.rotation = Quaternion.LookRotation(newDiraction);
         }
     }

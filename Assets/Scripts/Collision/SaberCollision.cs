@@ -9,7 +9,7 @@ public class SaberCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Shield")) {
+        if (other.CompareTag("Sheild Shape")) {
 
             int random = Random.Range(0, 3);
             SoundManager.Instance.PlaySound(_clip[random]);
@@ -18,6 +18,7 @@ public class SaberCollision : MonoBehaviour
             EventManager.current.ShieldHit();
             EventManager.current.PlayerGetScore(_scoreData.sheildShapePoints);
             EventManager.current.UIHealthChange();
+            Destroy(other.gameObject); 
         }
 
         if (other.CompareTag("Boomb Shape")) {
@@ -33,5 +34,7 @@ public class SaberCollision : MonoBehaviour
         if (other.CompareTag("End Level")) {
             EventManager.current.EndLevel();
         }
+
+
     }
 }

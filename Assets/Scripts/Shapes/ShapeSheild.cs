@@ -7,24 +7,9 @@ public class ShapeSheild : MonoBehaviour
     [SerializeField] float rotationSpeed;
     [SerializeField] float moveSpeed;
 
-    private Collider[] hitColliders;
-
     private void Start()
     {
         StartCoroutine(Rotate());
-    }
-
-    private void HitDetector()
-    {
-        hitColliders = Physics.OverlapSphere(transform.position, 3);
-
-        foreach (Collider hitCollider in hitColliders)
-        {
-            if (hitCollider.CompareTag("Red Saber") || hitCollider.CompareTag("Blue Saber"))
-            {
-                Destroy(gameObject);
-            }
-        }
     }
 
     private void RotateShapeSheildRandomly()
@@ -45,8 +30,6 @@ public class ShapeSheild : MonoBehaviour
 
         while (transform.gameObject != null)
         {
-            HitDetector();
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveSpeed * Time.deltaTime);
             transform.Rotate(transform.rotation.x, rotationSpeed, transform.rotation.z);
             yield return null;
         }
