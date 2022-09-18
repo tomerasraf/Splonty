@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47931bbe7f39a60468f8b0d6e72e6f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameData: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
+  level1ParentObject: {fileID: 0}
+  lightSaber: {fileID: 0}
+  endLevelCollider: {fileID: 0}
+  levelSpeed: 50
+  timeScale: 1

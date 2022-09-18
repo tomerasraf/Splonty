@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Vars")]
     [SerializeField] float levelSpeed;
+    [SerializeField] float timeScale;
 
     private void Awake()
     {
@@ -27,6 +28,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(MoveLevel());
         StartCoroutine(CountGameTime());
         StartCoroutine(LevelProgress());
+        StartCoroutine(SetTimeScale());
+
+        // Ad Requests
+        AdManager.instance.RequestRewardAd();
     }
 
     private void GameOver()
@@ -34,18 +39,25 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
     }
 
+    private void EndLevel()
+    {
+        //AdManager.instance.ShowInterstitial();    
+        AdManager.instance.ShowRewardAd();
+    }
+
     #region EventCallers
     private void OnEnable()
     {
         EventManager.current.onStartGameTouch += StartGame;
+        EventManager.current.onEndLevel += EndLevel;
         EventManager.current.onGameOver += GameOver;
     }
     private void OnDisable()
     {
         EventManager.current.onGameOver -= GameOver;
+        EventManager.current.onEndLevel -= EndLevel;
         EventManager.current.onStartGameTouch -= StartGame;
     }
-
     #endregion
 
     #region IEnumerators
@@ -80,6 +92,17 @@ public class GameManager : MonoBehaviour
                 _gameData.currentLevelProgress = (endLevelCollider.position - lightSaber.position).sqrMagnitude;
             }
 
+            yield return null;
+        }
+    }
+
+    IEnumerator SetTimeScale()
+    {
+
+        while (true)
+        {
+
+            Time.timeScale = timeScale;
             yield return null;
         }
     }

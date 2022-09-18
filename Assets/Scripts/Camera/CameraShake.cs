@@ -17,7 +17,7 @@ public class CameraShake : MonoBehaviour
 
     private void ShakeCamera()
     {
-        StartCoroutine(Shake());
+       StartCoroutine(Shake());
     }
 
     IEnumerator Shake()

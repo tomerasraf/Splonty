@@ -45,27 +45,41 @@ public class UIManager : MonoBehaviour
     #region Events
     private void OnEnable()
     {
+        // Display UI Events
         EventManager.current.onStartGameTouch += UIDisplayOff;
         EventManager.current.onStartGameTouch += DisplayGameplayCanvas;
-        EventManager.current.onEndLevel += DisplayLevelSummaryCanvas;
-        EventManager.current.onEndLevel += LevelSummaryUIUpdater;
+        EventManager.current.onCloseInterstitialAd += DisplayLevelSummaryCanvas;
         EventManager.current.onGameOver += DisplayReviveCanvas;
+        EventManager.current.onOpenInterstitialAd += InterstitialAdOpen;
+        EventManager.current.onOpenRewardedAd += UIDisplayOff;
+        EventManager.current.onOpenRewardedAd += RewardedAdOpen;
+        EventManager.current.onCloseRewardedAd += RewardedAdClose;
+
+        // UI Updater Events
+        EventManager.current.onEndLevel += LevelSummaryUIUpdater;
         EventManager.current.onUIHealthChange += HealthBarUpdater;
         EventManager.current.onScoreUpdate += ScoreUpdater;
-        EventManager.current.onFeedback += PlayerFeedback;
+        EventManager.current.onFeedback += PlayerFeedbackUpdater;
         EventManager.current.onComboUIUpdater += ComboUIupdater;
     }
 
     private void OnDisable()
     {
+        // Display UI Events
         EventManager.current.onStartGameTouch -= UIDisplayOff;
-        EventManager.current.onEndLevel -= DisplayLevelSummaryCanvas;
+        EventManager.current.onOpenInterstitialAd -= InterstitialAdOpen;
+        EventManager.current.onCloseInterstitialAd -= DisplayLevelSummaryCanvas;
+        EventManager.current.onGameOver -= DisplayReviveCanvas;
+        EventManager.current.onOpenRewardedAd -= UIDisplayOff;
+        EventManager.current.onOpenRewardedAd -= RewardedAdOpen;
+        EventManager.current.onCloseRewardedAd -= RewardedAdClose;
+
+        // UI Updater Events
         EventManager.current.onEndLevel -= LevelSummaryUIUpdater;
         EventManager.current.onShapeHit -= HealthBarUpdater;
-        EventManager.current.onGameOver -= DisplayReviveCanvas;
         EventManager.current.onUIHealthChange -= HealthBarUpdater;
         EventManager.current.onScoreUpdate -= ScoreUpdater;
-        EventManager.current.onFeedback -= PlayerFeedback;
+        EventManager.current.onFeedback -= PlayerFeedbackUpdater;
         EventManager.current.onComboUIUpdater -= ComboUIupdater;
     }
     #endregion
@@ -96,14 +110,14 @@ public class UIManager : MonoBehaviour
     }
     IEnumerator ProgressBar()
     {
- 
+
         while (true)
         {
-            progressBarFiller.fillAmount = Mathf.InverseLerp(_gameData.fullLevelDistance, 0f , _gameData.currentLevelProgress);
+            progressBarFiller.fillAmount = Mathf.InverseLerp(_gameData.fullLevelDistance, 0f, _gameData.currentLevelProgress);
 
-            int percentageToInt = Mathf.CeilToInt(progressBarFiller.fillAmount * 100);
+            int percentageToInt = (int)(progressBarFiller.fillAmount * 100);
 
-            levelProgressPrecentege.text = $"{percentageToInt.ToString()}%" ;
+            levelProgressPrecentege.text = $"{percentageToInt.ToString()}%";
             yield return null;
         }
     }
@@ -137,6 +151,9 @@ public class UIManager : MonoBehaviour
     private void UIDisplayOff()
     {
         menuCanvas.SetActive(false);
+        gameplayCanvas.SetActive(false);
+        reviveCanvas.SetActive(false);
+        levelSummaryCanvas.SetActive(false);
     }
 
     private void DisplayLevelSummaryCanvas()
@@ -170,7 +187,7 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = _gameData.score.ToString();
     }
-    private void PlayerFeedback(int feedbackIndex)
+    private void PlayerFeedbackUpdater(int feedbackIndex)
     {
         images[feedbackIndex].transform.DORewind();
         images[feedbackIndex].transform.DOScale(0, 0).OnComplete(() =>
@@ -194,5 +211,24 @@ public class UIManager : MonoBehaviour
         pointer.DOShapeCircle(pointer.anchoredPosition, 360, 3, true).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         yield return null;
     }
+    #endregion
+
+    #region Ads
+
+    private void RewardedAdOpen()
+    {
+        AdManager.instance.RequestInterstitial();
+    }
+
+    private void RewardedAdClose()
+    {
+        AdManager.instance.ShowInterstitial();
+    }
+
+    private void InterstitialAdOpen()
+    {
+        AdManager.instance.RequestRewardAd();
+    }
+
     #endregion
 }

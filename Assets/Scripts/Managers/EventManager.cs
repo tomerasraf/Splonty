@@ -102,4 +102,31 @@ public class EventManager : MonoBehaviour
     #region Sound Events
 
     #endregion
+
+    #region Ad Events
+
+    public event Action onOpenInterstitialAd;
+    public void OpenInterstitialAd()
+    {
+        onOpenInterstitialAd?.Invoke();
+    }
+
+    public event Action onCloseInterstitialAd;
+    public void CloseInterstitialAd()
+    {
+        onCloseInterstitialAd?.Invoke();
+    }
+
+    public event Action onOpenRewardedAd;
+    public void OpenRewardedAd()
+    {
+        onOpenRewardedAd?.Invoke();
+    }
+
+    public event Action onCloseRewardedAd;
+    public void CloseRewardedAd()
+    {
+        onCloseRewardedAd?.Invoke();
+    }
+    #endregion
 }
