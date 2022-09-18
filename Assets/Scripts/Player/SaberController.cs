@@ -3,9 +3,10 @@ using UnityEngine;
 public class SaberController : MonoBehaviour
 {
 
-    [Header("Hammer Vars")]
+    [Header("Saber Vars")]
     [SerializeField] float saberSpeed;
     [SerializeField] float smoothRotation;
+    [SerializeField] LayerMask layer;
 
     private float screenWidth;
     Touch touch;
@@ -116,7 +117,7 @@ public class SaberController : MonoBehaviour
             RaycastHit hit;
 
             // Shooting a ray from the camera to the desire player.
-            if (Physics.Raycast(touchPosN, touchPosF - touchPosN, out hit))
+            if (Physics.Raycast(touchPosN, touchPosF - touchPosN, out hit, 100, layer))
             {
                 GrabHandle(hit);
             }

@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Objects")]
     [SerializeField] GameObject level1ParentObject;
+    [SerializeField] GameObject winner3DText;
 
     [Header("Transforms")]
     [SerializeField] Transform lightSaber;
@@ -16,6 +19,9 @@ public class GameManager : MonoBehaviour
     [Header("Vars")]
     [SerializeField] float levelSpeed;
     [SerializeField] float timeScale;
+
+    [Header("Effects")]
+    [SerializeField] GameObject[] calebrationSFX;
 
     private void Awake()
     {
@@ -41,8 +47,28 @@ public class GameManager : MonoBehaviour
 
     private void EndLevel()
     {
-        //AdManager.instance.ShowInterstitial();    
+        StopCoroutine(MoveLevel());
+        StartCoroutine(FinishLine());
+    }
+
+    IEnumerator FinishLine()
+    {
+
+        for (int i = 0; i < calebrationSFX.Length; i++)
+        {
+            calebrationSFX[i].SetActive(true);
+        }
+
+        winner3DText.transform.DOScale(0, 0).OnComplete(() =>
+        {
+            winner3DText.SetActive(true);
+            winner3DText.transform.DOScale(1, 0.5f);
+        });
+
+        yield return new WaitForSeconds(4f);
         AdManager.instance.ShowRewardAd();
+        EventManager.current.DisplaySummery();
+        yield return null;
     }
 
     #region EventCallers
@@ -71,7 +97,9 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator MoveLevel()
     {
-        while (true)
+        yield return new WaitForSeconds(0.2f);
+
+        while (_gameData.currentLevelProgress > 4)
         {
             level1ParentObject.transform.position = new Vector3(
                 level1ParentObject.transform.position.x,

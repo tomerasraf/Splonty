@@ -4,15 +4,16 @@ public class PlayerHP : MonoBehaviour
     [SerializeField] GameData _gameData;
     private void OnEnable()
     {
-        EventManager.current.onWrongColorHit += PlayerGettingHit;
+        EventManager.current.onDamageHit += PlayerGettingHit;
         EventManager.current.onBombHit += PlayerGettingHit;
         EventManager.current.onShieldHit += PlayerGettingHit;
         EventManager.current.onShapeHit += PlayerIncreaseHP;
         EventManager.current.onShapeMiss += PlayerGettingHit;
+
     }
     private void OnDisable()
     {
-        EventManager.current.onWrongColorHit -= PlayerGettingHit;
+        EventManager.current.onDamageHit -= PlayerGettingHit;
         EventManager.current.onBombHit -= PlayerGettingHit;
         EventManager.current.onShieldHit -= PlayerGettingHit;
         EventManager.current.onShapeHit -= PlayerIncreaseHP;
@@ -29,7 +30,7 @@ public class PlayerHP : MonoBehaviour
 
     private void PlayerGettingHit(int damage)
     {
-       
+     
         if (_gameData.healthPoints <= 0)
         {
             EventManager.current.GameOver();

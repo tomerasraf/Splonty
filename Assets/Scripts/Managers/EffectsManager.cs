@@ -10,5 +10,4 @@ public class EffectsManager : MonoBehaviour
     public static void effectSpawner(GameObject effect, Collider hit) {
         Instantiate(effect, hit.transform.position, Quaternion.identity);
     }
-
 }

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="gcm_defaultSenderId" translatable="false">389780532903</string>
+  <string name="google_storage_bucket" translatable="false">space-blader.appspot.com</string>
+  <string name="project_id" translatable="false">space-blader</string>
+  <string name="google_api_key" translatable="false">AIzaSyCMcuWfzwmrve1SmGqJqzs69pT0UldGavA</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCMcuWfzwmrve1SmGqJqzs69pT0UldGavA</string>
+  <string name="google_app_id" translatable="false">1:389780532903:android:742143da4241a3618d7582</string>
+  <string name="default_web_client_id" translatable="false">389780532903-ccgobq9ui4epo8sl52blfct0cqk9ib7j.apps.googleusercontent.com</string>
+</resources>

@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI summaryScoreText;
     [SerializeField] TextMeshProUGUI summaryComboText;
     [SerializeField] TextMeshProUGUI levelProgressPrecentege;
+    [SerializeField] TextMeshProUGUI addedScoreText;
 
     [Header("Images")]
     [SerializeField] Image healthBarFiller;
@@ -34,6 +35,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Feedback Images")]
     [SerializeField] GameObject[] images;
+
+    [Header("Parent Objects")]
+    [SerializeField] GameObject dynamicAddScore;
 
     private void Start()
     {
@@ -48,12 +52,16 @@ public class UIManager : MonoBehaviour
         // Display UI Events
         EventManager.current.onStartGameTouch += UIDisplayOff;
         EventManager.current.onStartGameTouch += DisplayGameplayCanvas;
-        EventManager.current.onCloseInterstitialAd += DisplayLevelSummaryCanvas;
+        //EventManager.current.onEndLevel += DisplayLevelSummaryCanvas;
+        //EventManager.current.onCloseInterstitialAd += DisplayLevelSummaryCanvas;
+        EventManager.current.onDisplaySummery += DisplayLevelSummaryCanvas;
         EventManager.current.onGameOver += DisplayReviveCanvas;
-        EventManager.current.onOpenInterstitialAd += InterstitialAdOpen;
-        EventManager.current.onOpenRewardedAd += UIDisplayOff;
         EventManager.current.onOpenRewardedAd += RewardedAdOpen;
         EventManager.current.onCloseRewardedAd += RewardedAdClose;
+        EventManager.current.onCloseInterstitialAd += InterstitialAdClose;
+        EventManager.current.onOpenInterstitialAd += InterstitialAdOpen;
+        EventManager.current.onFaildToLoadInterstitialAd += InterstitialAdFaildToLoad;
+        EventManager.current.onAddedScore += AddScoreUpdater;
 
         // UI Updater Events
         EventManager.current.onEndLevel += LevelSummaryUIUpdater;
@@ -67,12 +75,15 @@ public class UIManager : MonoBehaviour
     {
         // Display UI Events
         EventManager.current.onStartGameTouch -= UIDisplayOff;
+        EventManager.current.onCloseInterstitialAd -= InterstitialAdClose;
         EventManager.current.onOpenInterstitialAd -= InterstitialAdOpen;
+        EventManager.current.onFaildToLoadInterstitialAd -= InterstitialAdFaildToLoad;
         EventManager.current.onCloseInterstitialAd -= DisplayLevelSummaryCanvas;
         EventManager.current.onGameOver -= DisplayReviveCanvas;
-        EventManager.current.onOpenRewardedAd -= UIDisplayOff;
         EventManager.current.onOpenRewardedAd -= RewardedAdOpen;
         EventManager.current.onCloseRewardedAd -= RewardedAdClose;
+        EventManager.current.onEndLevel -= DisplayLevelSummaryCanvas;
+
 
         // UI Updater Events
         EventManager.current.onEndLevel -= LevelSummaryUIUpdater;
@@ -203,6 +214,25 @@ public class UIManager : MonoBehaviour
             });
         });
     }
+
+    private void AddScoreUpdater(Transform ballPosition, int addedScore) {
+     TextMeshProUGUI textClone = Instantiate(addedScoreText, ballPosition.position, Quaternion.Euler(45, 0, 0), dynamicAddScore.transform);
+        textClone.gameObject.SetActive(false);
+
+        textClone.DOFade(0, 0).OnComplete(() => {
+            textClone.gameObject.SetActive(true);
+            textClone.transform.DOMoveY(textClone.transform.position.y + 30, 2);
+
+            textClone.DOFade(0.6f, 0.2f).OnComplete(() => {
+                textClone.DOFade(0, 0.5f).OnComplete(() => {
+                    Destroy(textClone);
+                });
+            });
+        });
+      
+        
+    }
+
     #endregion
 
     #region MenuUI
@@ -217,17 +247,31 @@ public class UIManager : MonoBehaviour
 
     private void RewardedAdOpen()
     {
-        AdManager.instance.RequestInterstitial();
+        SoundManager.Instance.StopPlayingSound();
     }
 
     private void RewardedAdClose()
     {
+        AdManager.instance.RequestInterstitial();
+        AdManager.instance.RequestRewardAd();
         AdManager.instance.ShowInterstitial();
     }
 
     private void InterstitialAdOpen()
     {
-        AdManager.instance.RequestRewardAd();
+    
+    }
+
+    private void InterstitialAdClose()
+    {
+        DisplayLevelSummaryCanvas();
+        AdManager.instance.interstitial.Destroy();
+    }
+
+    private void InterstitialAdFaildToLoad()
+    {
+        DisplayLevelSummaryCanvas();
+        Debug.Log("Faild To Load Interstitia");
     }
 
     #endregion

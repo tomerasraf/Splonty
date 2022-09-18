@@ -12,7 +12,7 @@ public class CameraShake : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.current.onShapeHit += ShakeCamera;
+        EventManager.current.onWrongColorHit += ShakeCamera;
     }
 
     private void ShakeCamera()

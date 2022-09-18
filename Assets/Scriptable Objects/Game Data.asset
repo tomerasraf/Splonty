@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Game Data
   m_EditorClassIdentifier: 
   healthPoints: 100
-  currentLevelProgress: 0
-  fullLevelDistance: 0
+  currentLevelProgress: 1583321
+  fullLevelDistance: 1583321
   coins: 0
   score: 0
   highestScore: 0
   comboHits: 0
-  highestCombo: 42
-  gameplayTime: 0
+  highestCombo: 67
+  gameplayTime: 14.73742

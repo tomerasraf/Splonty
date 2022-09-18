@@ -8,7 +8,7 @@ public class PlayerCombo : MonoBehaviour
     private void OnEnable()
     {
         EventManager.current.onShapeHit += ComboCounter;
-        EventManager.current.onWrongColorHit += ResetCombo;
+        EventManager.current.onDamageHit += ResetCombo;
         EventManager.current.onShapeMiss += ResetCombo;
         EventManager.current.onBombHit += ResetCombo;
         EventManager.current.onShieldHit += ResetCombo;
@@ -16,7 +16,7 @@ public class PlayerCombo : MonoBehaviour
     private void OnDisable()
     {
         EventManager.current.onShapeHit -= ComboCounter;
-        EventManager.current.onWrongColorHit -= ResetCombo;
+        EventManager.current.onDamageHit -= ResetCombo;
         EventManager.current.onShapeMiss -= ResetCombo;
         EventManager.current.onBombHit -= ResetCombo;
         EventManager.current.onShieldHit -= ResetCombo;

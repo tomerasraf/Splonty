@@ -33,6 +33,7 @@ public class SaberCollision : MonoBehaviour
 
         if (other.CompareTag("End Level")) {
             EventManager.current.EndLevel();
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
 
 

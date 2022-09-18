@@ -36,11 +36,18 @@ public class EventManager : MonoBehaviour
         onShapeMiss?.Invoke(_shapeData.missShapeDamage);
     }
 
-    public event Action<int> onWrongColorHit;
+    public event Action<int> onDamageHit;
+    public void DamageHit()
+    {
+        onDamageHit?.Invoke(_shapeData.colorShapeDamage);
+    }
+
+    public event Action onWrongColorHit;
     public void WrongShapeHit()
     {
-        onWrongColorHit?.Invoke(_shapeData.colorShapeDamage);
+        onWrongColorHit?.Invoke();
     }
+
     #endregion
 
     #region Player Score/Combo Events
@@ -49,6 +56,12 @@ public class EventManager : MonoBehaviour
     public void PlayerGetScore(int score)
     {
         onPlayerGetScore?.Invoke(score);
+    }
+
+    public event Action<Transform , int> onAddedScore;
+    public void AddedScore(Transform ballTransform ,int addedScore)
+    {
+        onAddedScore?.Invoke(ballTransform, addedScore);
     }
     #endregion
 
@@ -97,6 +110,12 @@ public class EventManager : MonoBehaviour
     {
         onGameOver?.Invoke();
     }
+
+    public event Action onDisplaySummery;
+    public void DisplaySummery()
+    {
+        onDisplaySummery?.Invoke();
+    }
     #endregion
 
     #region Sound Events
@@ -115,6 +134,12 @@ public class EventManager : MonoBehaviour
     public void CloseInterstitialAd()
     {
         onCloseInterstitialAd?.Invoke();
+    }
+
+    public event Action onFaildToLoadInterstitialAd;
+    public void FaildToLoadInterstitialAd()
+    {
+        onFaildToLoadInterstitialAd?.Invoke();
     }
 
     public event Action onOpenRewardedAd;

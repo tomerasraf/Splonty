@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class AdManager : MonoBehaviour
 {
-    private InterstitialAd interstitial;
-    private RewardedInterstitialAd rewardedInterstitial;
+    public InterstitialAd interstitial;
     private RewardedAd rewarded;
 
     public static AdManager instance;
@@ -43,7 +42,12 @@ public class AdManager : MonoBehaviour
     {
         EventManager.current.OpenInterstitialAd();
     }
-    
+
+    private void OnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
+    {
+        EventManager.current.FaildToLoadInterstitialAd();
+    }
+
     public void RequestInterstitial()
     {
         string adUnityId = "ca-app-pub-3940256099942544/1033173712";
@@ -53,15 +57,13 @@ public class AdManager : MonoBehaviour
 
         this.interstitial = new InterstitialAd(adUnityId);
 
-        this.interstitial.OnAdClosed += HandleIntestitialAdClosed;
+        this.interstitial.OnAdFailedToLoad += OnAdFailedToLoad;
 
         this.interstitial.OnAdOpening += Interstitial_OnAdOpening;
 
-
+        this.interstitial.OnAdClosed += HandleIntestitialAdClosed;
         this.interstitial.LoadAd(this.CreateAdRequest());
     }
-
- 
 
     public void ShowInterstitial()
     {
@@ -87,9 +89,9 @@ public class AdManager : MonoBehaviour
 
         this.rewarded = new RewardedAd(adUnityId);
 
-        this.rewarded.OnAdClosed += HandleRewardedAdClosed;
-
         this.rewarded.OnAdOpening += OnAdOpening;
+
+        this.rewarded.OnAdClosed += HandleRewardedAdClosed;
 
         this.rewarded.LoadAd(this.CreateAdRequest());
     }

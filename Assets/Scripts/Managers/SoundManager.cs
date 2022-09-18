@@ -25,6 +25,10 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void StopPlayingSound() {
+        _effectSource.Stop();
+    }
+
     public void PlaySound(AudioClip clip)
     {
         _effectSource.clip = clip;
