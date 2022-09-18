@@ -11,6 +11,9 @@ public class RedSaberCollision : MonoBehaviour
 
     [Header("Effects")]
     [SerializeField] GameObject redExplostion;
+
+    [Header("Sounds")]
+    [SerializeField] AudioClip missClip;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Red Shape"))
@@ -27,6 +30,7 @@ public class RedSaberCollision : MonoBehaviour
 
         if (other.CompareTag("Blue Shape"))
         {
+            SoundManager.Instance.PlaySound(missClip);
             EventManager.current.DamageHit();
             EventManager.current.WrongShapeHit();
             StartCoroutine(HitFeedback());

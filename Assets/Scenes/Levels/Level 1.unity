@@ -619,6 +619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3235915641047762624, guid: 55dbda0194bf04c46afe3e0ca1079653, type: 3}
+      propertyPath: missCLip
+      value: 
+      objectReference: {fileID: 8300000, guid: 45ea4969c95a86a43a6cbb5bb4dd32cb, type: 3}
     - target: {fileID: 3235915642129622800, guid: 55dbda0194bf04c46afe3e0ca1079653, type: 3}
       propertyPath: m_Name
       value: Logic
@@ -1061,6 +1065,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7827801851901972450, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
+      propertyPath: missClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d857319149cee864b9a1b72ba088cb6a, type: 3}
+    - target: {fileID: 7827801852856319262, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
+      propertyPath: missClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d857319149cee864b9a1b72ba088cb6a, type: 3}
     - target: {fileID: 7827801853621229198, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
       propertyPath: m_Name
       value: Player
