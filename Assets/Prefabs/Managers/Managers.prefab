@@ -103,6 +103,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2444685872449575053, guid: 04835a0339658ff47ab9d17efaa1b33c, type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
+    - target: {fileID: 2444685872449575053, guid: 04835a0339658ff47ab9d17efaa1b33c, type: 3}
       propertyPath: menuCanvas
       value: 
       objectReference: {fileID: 0}
@@ -189,12 +193,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1368346858185318106, guid: d743103409950c5458208b1d1809d7f1, type: 3}
+      propertyPath: gameOverSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fd869227fb414f746a6a55cad6c01ef5, type: 3}
+    - target: {fileID: 1368346858185318106, guid: d743103409950c5458208b1d1809d7f1, type: 3}
       propertyPath: endLevelCollider
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1368346858185318106, guid: d743103409950c5458208b1d1809d7f1, type: 3}
       propertyPath: level1ParentObject
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368346858185318106, guid: d743103409950c5458208b1d1809d7f1, type: 3}
+      propertyPath: calebrationSFX.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1368346858185318107, guid: d743103409950c5458208b1d1809d7f1, type: 3}
       propertyPath: m_Name
@@ -384,6 +396,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 682816791872260269, guid: 2f38086f6cb41564bb3c1ee3c8deffd8, type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
     - target: {fileID: 682816791872260271, guid: 2f38086f6cb41564bb3c1ee3c8deffd8, type: 3}
       propertyPath: m_Name
       value: Scene Manager
@@ -526,6 +542,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3909608216626703058}
     m_Modifications:
+    - target: {fileID: 6779942739825495098, guid: cc5d0a944b731ea41a564a90a8ce1ab4, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6779942741244873707, guid: cc5d0a944b731ea41a564a90a8ce1ab4, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -573,6 +593,10 @@ PrefabInstance:
     - target: {fileID: 6779942741244873709, guid: cc5d0a944b731ea41a564a90a8ce1ab4, type: 3}
       propertyPath: m_Name
       value: Sound Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779942741481020086, guid: cc5d0a944b731ea41a564a90a8ce1ab4, type: 3}
+      propertyPath: m_Pitch
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc5d0a944b731ea41a564a90a8ce1ab4, type: 3}

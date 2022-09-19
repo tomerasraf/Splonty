@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     [Header("Effects")]
     [SerializeField] GameObject[] calebrationSFX;
 
+    [Header("Sounds")]
+    [SerializeField] AudioClip gameOverSound;
+
+
     private void Awake()
     {
         QualitySettings.vSyncCount = 0;
@@ -42,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
+        SoundManager.Instance.StopPlayingSound();
+        SoundManager.Instance.PlaySound(gameOverSound);
         StopAllCoroutines();
     }
 
