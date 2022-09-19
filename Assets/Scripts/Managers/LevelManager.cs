@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] GameData gameData;
+
     public static LevelManager Instance;
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LoadScene(int sceneIndex) {
+        gameData.comboHits = 0;
         SceneManager.LoadSceneAsync(sceneIndex);
     }
 }

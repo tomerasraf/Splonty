@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cleaner
       objectReference: {fileID: 0}
+    - target: {fileID: 8960015844694435820, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
+      propertyPath: missCLip
+      value: 
+      objectReference: {fileID: 8300000, guid: 45ea4969c95a86a43a6cbb5bb4dd32cb, type: 3}
     - target: {fileID: 8960015844694435821, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
       propertyPath: m_RootOrder
       value: 0

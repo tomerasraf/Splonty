@@ -466,6 +466,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1289893595 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7083002257299915636, guid: 80490a699a251504f980db1e48eed618, type: 3}
+  m_PrefabInstance: {fileID: 7083002258000887531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1416473846 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7083002258866246173, guid: 80490a699a251504f980db1e48eed618, type: 3}
@@ -619,10 +630,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3235915641047762624, guid: 55dbda0194bf04c46afe3e0ca1079653, type: 3}
-      propertyPath: missCLip
-      value: 
-      objectReference: {fileID: 8300000, guid: 45ea4969c95a86a43a6cbb5bb4dd32cb, type: 3}
     - target: {fileID: 3235915642129622800, guid: 55dbda0194bf04c46afe3e0ca1079653, type: 3}
       propertyPath: m_Name
       value: Logic
@@ -768,6 +775,18 @@ PrefabInstance:
       propertyPath: calebrationSFX.Array.data[2]
       value: 
       objectReference: {fileID: 5154006378279618617}
+    - target: {fileID: 3909608217985272494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
+    - target: {fileID: 3909608217990837494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
+    - target: {fileID: 3909608217990837494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: levelTitle
+      value: 
+      objectReference: {fileID: 1289893595}
     - target: {fileID: 3909608217990837494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
       propertyPath: menuCanvas
       value: 
@@ -848,6 +867,10 @@ PrefabInstance:
       propertyPath: levelProgressPrecentege
       value: 
       objectReference: {fileID: 67669112}
+    - target: {fileID: 3909608218534787876, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
 --- !u!1001 &5154006378279618616
@@ -1065,14 +1088,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7827801851901972450, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: missClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d857319149cee864b9a1b72ba088cb6a, type: 3}
-    - target: {fileID: 7827801852856319262, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: missClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d857319149cee864b9a1b72ba088cb6a, type: 3}
     - target: {fileID: 7827801853621229198, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
       propertyPath: m_Name
       value: Player

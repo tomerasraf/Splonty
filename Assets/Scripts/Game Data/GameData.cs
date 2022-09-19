@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     [Header("Player Data")]
+    public int Level = 0;
     public float healthPoints = 0;
     public float currentLevelProgress = 0;
     public float fullLevelDistance = 0;
@@ -21,6 +22,7 @@ public class GameData : ScriptableObject
 
     public void ResetData()
     {
+        Level = 0;
         healthPoints = 100;
         gameplayTime = 0;
         comboHits = 0;

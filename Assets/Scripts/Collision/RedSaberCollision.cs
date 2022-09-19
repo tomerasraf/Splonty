@@ -8,12 +8,14 @@ public class RedSaberCollision : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] ScoreData _scoreData;
+    [SerializeField] GameData _gameData;
 
     [Header("Effects")]
     [SerializeField] GameObject redExplostion;
 
     [Header("Sounds")]
     [SerializeField] AudioClip missClip;
+    [SerializeField] AudioClip comboBreaker;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Red Shape"))
@@ -30,11 +32,22 @@ public class RedSaberCollision : MonoBehaviour
 
         if (other.CompareTag("Blue Shape"))
         {
-            SoundManager.Instance.PlaySound(missClip);
-            EventManager.current.DamageHit();
-            EventManager.current.WrongShapeHit();
-            StartCoroutine(HitFeedback());
-            Destroy(other.gameObject);
+            if (_gameData.comboHits > 20)
+            {
+                SoundManager.Instance.PlayOneShotSound(comboBreaker);
+                EventManager.current.DamageHit();
+                EventManager.current.WrongShapeHit();
+                StartCoroutine(HitFeedback());
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                SoundManager.Instance.PlayOneShotSound(missClip);
+                EventManager.current.DamageHit();
+                EventManager.current.WrongShapeHit();
+                StartCoroutine(HitFeedback());
+                Destroy(other.gameObject);
+            }
         }
 
         if (other.CompareTag("Parallel Red Shape"))

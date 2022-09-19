@@ -214,6 +214,18 @@ PrefabInstance:
       propertyPath: calebrationSFX.Array.data[2]
       value: 
       objectReference: {fileID: 1996874948}
+    - target: {fileID: 3909608217985272494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
+    - target: {fileID: 3909608217990837494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
+    - target: {fileID: 3909608217990837494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: levelTitle
+      value: 
+      objectReference: {fileID: 1741656083}
     - target: {fileID: 3909608217990837494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
       propertyPath: menuCanvas
       value: 
@@ -743,6 +755,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7083002257522722816, guid: 80490a699a251504f980db1e48eed618, type: 3}
   m_PrefabInstance: {fileID: 1741656079}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1741656083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7083002257299915636, guid: 80490a699a251504f980db1e48eed618, type: 3}
+  m_PrefabInstance: {fileID: 1741656079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1741656085 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7083002258067436179, guid: 80490a699a251504f980db1e48eed618, type: 3}
