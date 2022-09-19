@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.07708772, g: 0.07571504, b: 0.08133348, a: 1}
+  m_IndirectSpecularColor: {r: 0.08580341, g: 0.08453333, b: 0.08951721, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -630,10 +630,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3235915641047762624, guid: 55dbda0194bf04c46afe3e0ca1079653, type: 3}
-      propertyPath: missCLip
-      value: 
-      objectReference: {fileID: 8300000, guid: ae4a19143fe113a43b45dcd548f648f5, type: 3}
     - target: {fileID: 3235915642129622800, guid: 55dbda0194bf04c46afe3e0ca1079653, type: 3}
       propertyPath: m_Name
       value: Logic
@@ -1096,62 +1092,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7827801851901972450, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: missClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 21ce9528c8f6be249a6a51022107d5a6, type: 3}
-    - target: {fileID: 7827801851901972450, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 70a5759407b1d5c489fa382e8c5b36ac, type: 3}
-    - target: {fileID: 7827801851901972450, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1d5da36d16f78824c9f71c210f560c6b, type: 3}
-    - target: {fileID: 7827801851901972450, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5630016dab9741648bc3ed6fa77ddf52, type: 3}
-    - target: {fileID: 7827801851901972479, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 70a5759407b1d5c489fa382e8c5b36ac, type: 3}
-    - target: {fileID: 7827801851901972479, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1d5da36d16f78824c9f71c210f560c6b, type: 3}
-    - target: {fileID: 7827801851901972479, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5630016dab9741648bc3ed6fa77ddf52, type: 3}
-    - target: {fileID: 7827801852856319259, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 70a5759407b1d5c489fa382e8c5b36ac, type: 3}
-    - target: {fileID: 7827801852856319259, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1d5da36d16f78824c9f71c210f560c6b, type: 3}
-    - target: {fileID: 7827801852856319259, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5630016dab9741648bc3ed6fa77ddf52, type: 3}
-    - target: {fileID: 7827801852856319262, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: missClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 21ce9528c8f6be249a6a51022107d5a6, type: 3}
-    - target: {fileID: 7827801852856319262, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 70a5759407b1d5c489fa382e8c5b36ac, type: 3}
-    - target: {fileID: 7827801852856319262, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1d5da36d16f78824c9f71c210f560c6b, type: 3}
-    - target: {fileID: 7827801852856319262, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
-      propertyPath: _clip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5630016dab9741648bc3ed6fa77ddf52, type: 3}
     - target: {fileID: 7827801853621229198, guid: 5b41ecaf070d5574bbbeb5d35919f197, type: 3}
       propertyPath: m_Name
       value: Player

@@ -710,7 +710,7 @@ MonoBehaviour:
   _scoreData: {fileID: 11400000, guid: 421d2c20078233844a3773a51a7efb2c, type: 2}
   _gameData: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
   blueExplostion: {fileID: 7045001805100220132, guid: ed541ba1158cfc04bb8f047b6d5cf792, type: 3}
-  missClip: {fileID: 8300000, guid: d857319149cee864b9a1b72ba088cb6a, type: 3}
+  missClip: {fileID: 8300000, guid: 21ce9528c8f6be249a6a51022107d5a6, type: 3}
   comboBreaker: {fileID: 8300000, guid: dfa36760b8a638248ae5aaad2d2cdbdb, type: 3}
 --- !u!4 &2365312489834878109 stripped
 Transform:
@@ -770,7 +770,7 @@ MonoBehaviour:
   _scoreData: {fileID: 11400000, guid: 421d2c20078233844a3773a51a7efb2c, type: 2}
   _gameData: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
   redExplostion: {fileID: 6070735121154106257, guid: 923d46e00d2516b49847da93507f81d7, type: 3}
-  missClip: {fileID: 8300000, guid: d857319149cee864b9a1b72ba088cb6a, type: 3}
+  missClip: {fileID: 8300000, guid: 21ce9528c8f6be249a6a51022107d5a6, type: 3}
   comboBreaker: {fileID: 8300000, guid: dfa36760b8a638248ae5aaad2d2cdbdb, type: 3}
 --- !u!114 &7827801851901972479
 MonoBehaviour:

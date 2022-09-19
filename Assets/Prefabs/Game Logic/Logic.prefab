@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 8960015844694435820, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
       propertyPath: missCLip
       value: 
-      objectReference: {fileID: 8300000, guid: 45ea4969c95a86a43a6cbb5bb4dd32cb, type: 3}
+      objectReference: {fileID: 8300000, guid: ae4a19143fe113a43b45dcd548f648f5, type: 3}
     - target: {fileID: 8960015844694435820, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
       propertyPath: _gameData
       value: 

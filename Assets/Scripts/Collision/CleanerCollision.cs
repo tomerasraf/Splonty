@@ -23,7 +23,7 @@ public class CleanerCollision : MonoBehaviour
             }
             else
             {
-                SoundManager.Instance.PlaySound(missCLip);
+                SoundManager.Instance.PlayOneShotSound(missCLip);
                 EventManager.current.ShapeMiss();
                 EventManager.current.Feedback(0);
             }
