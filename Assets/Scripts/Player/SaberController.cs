@@ -36,71 +36,6 @@ public class SaberController : MonoBehaviour
     }
 
     #region SaberControl
-    private void RotateSaber()
-    {
-        if (Input.touchCount > 0)
-        {
-            touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
-            {
-                startTouchPosition = Input.GetTouch(0).position;
-                startRotation = transform.rotation;
-            }
-
-            if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
-            {
-                float currentDistanceBetweenTouchPositions = ((Vector3)touch.position - startTouchPosition).x;
-                transform.rotation = startRotation * Quaternion.Euler(Vector3.up * (currentDistanceBetweenTouchPositions / screenWidth) * 360);
-            }
-        }
-    }
-
-    private void DragToRotate()
-    {
-        if (Input.touchCount > 0)
-        {
-            touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                startTouchPosition = myCam.ScreenToViewportPoint(touch.position);
-            }
-
-            if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
-            {
-                Vector3 direction = startTouchPosition - myCam.ScreenToViewportPoint(touch.position);
-
-                angleInDegrees = direction.x * saberSpeed * 180 * Time.deltaTime;
-
-                transform.RotateAround(transform.position, new Vector3(0, -1, 0), angleInDegrees);
-
-                Debug.Log(touch.deltaPosition);
-            }
-        }
-    }
-
-    private void SlideToRotate()
-    {
-        if (Input.touchCount > 0)
-        {
-            touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                startTouchPosition = touch.position;
-                startRotation = transform.localRotation;
-            }
-
-            if (touch.phase == TouchPhase.Moved)
-            {
-                currentTouchPosition = touch.position;
-                Xmagnitud = currentTouchPosition.x - startTouchPosition.x;
-
-                endRotation = Quaternion.Euler(startRotation.x, Xmagnitud * saberSpeed, startRotation.z);
-
-                transform.rotation = Quaternion.Lerp(startRotation, endRotation, smoothRotation);
-            }
-        }
-    }
 
     private void PointToRotate()
     {
@@ -144,10 +79,6 @@ public class SaberController : MonoBehaviour
         }
     }
     #endregion
-
-
-
-
 }
 
 

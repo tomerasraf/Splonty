@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource _effectSource;
 
     [SerializeField] float chocker;
+    [SerializeField] float missChocker;
 
     bool _isPlaying = false;
 
@@ -41,6 +42,10 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(SoundChocke(clip));
     }
 
+    public void PlayMissChocker(AudioClip clip) {
+        StartCoroutine(MissChocke(clip));
+    }
+
     IEnumerator SoundChocke(AudioClip clip) {
 
         if (!_isPlaying) {
@@ -50,6 +55,23 @@ public class SoundManager : MonoBehaviour
         _isPlaying = true;
 
         yield return new WaitForSeconds(chocker);
+
+        _isPlaying = false;
+
+        yield return null;
+    }
+
+    IEnumerator MissChocke(AudioClip clip)
+    {
+
+        if (!_isPlaying)
+        {
+            _effectSource.PlayOneShot(clip);
+        }
+
+        _isPlaying = true;
+
+        yield return new WaitForSeconds(missChocker);
 
         _isPlaying = false;
 
