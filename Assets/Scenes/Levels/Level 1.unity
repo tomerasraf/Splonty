@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.08580341, g: 0.08453333, b: 0.08951721, a: 1}
+  m_IndirectSpecularColor: {r: 0.07708772, g: 0.07571504, b: 0.08133348, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -630,6 +630,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3235915641047762624, guid: 55dbda0194bf04c46afe3e0ca1079653, type: 3}
+      propertyPath: missCLip
+      value: 
+      objectReference: {fileID: 8300000, guid: 28e4e3d053e152d41b5be90cf37e7d76, type: 3}
     - target: {fileID: 3235915642129622800, guid: 55dbda0194bf04c46afe3e0ca1079653, type: 3}
       propertyPath: m_Name
       value: Logic
@@ -737,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3909608216997969140, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
       propertyPath: missChocker
-      value: 0.1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3909608217045365460, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
       propertyPath: lightSaber
