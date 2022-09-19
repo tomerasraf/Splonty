@@ -39,9 +39,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CountGameTime());
         StartCoroutine(LevelProgress());
         StartCoroutine(SetTimeScale());
-
-        // Ad Requests
-        AdManager.instance.RequestRewardAd();
     }
 
     private void GameOver()
@@ -72,7 +69,6 @@ public class GameManager : MonoBehaviour
         });
 
         yield return new WaitForSeconds(4f);
-        AdManager.instance.ShowRewardAd();
         EventManager.current.DisplaySummery();
         yield return null;
     }

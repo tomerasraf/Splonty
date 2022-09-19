@@ -124,7 +124,7 @@ public class EventManager : MonoBehaviour
 
     #region Ad Events
 
-    public event Action onOpenInterstitialAd;
+  /*  public event Action onOpenInterstitialAd;
     public void OpenInterstitialAd()
     {
         onOpenInterstitialAd?.Invoke();
@@ -152,6 +152,6 @@ public class EventManager : MonoBehaviour
     public void CloseRewardedAd()
     {
         onCloseRewardedAd?.Invoke();
-    }
+    }*/
     #endregion
 }

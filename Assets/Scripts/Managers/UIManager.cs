@@ -52,15 +52,8 @@ public class UIManager : MonoBehaviour
         // Display UI Events
         EventManager.current.onStartGameTouch += UIDisplayOff;
         EventManager.current.onStartGameTouch += DisplayGameplayCanvas;
-        //EventManager.current.onEndLevel += DisplayLevelSummaryCanvas;
-        //EventManager.current.onCloseInterstitialAd += DisplayLevelSummaryCanvas;
         EventManager.current.onDisplaySummery += DisplayLevelSummaryCanvas;
         EventManager.current.onGameOver += DisplayReviveCanvas;
-        EventManager.current.onOpenRewardedAd += RewardedAdOpen;
-        EventManager.current.onCloseRewardedAd += RewardedAdClose;
-        EventManager.current.onCloseInterstitialAd += InterstitialAdClose;
-        EventManager.current.onOpenInterstitialAd += InterstitialAdOpen;
-        EventManager.current.onFaildToLoadInterstitialAd += InterstitialAdFaildToLoad;
         EventManager.current.onAddedScore += AddScoreUpdater;
 
         // UI Updater Events
@@ -75,13 +68,7 @@ public class UIManager : MonoBehaviour
     {
         // Display UI Events
         EventManager.current.onStartGameTouch -= UIDisplayOff;
-        EventManager.current.onCloseInterstitialAd -= InterstitialAdClose;
-        EventManager.current.onOpenInterstitialAd -= InterstitialAdOpen;
-        EventManager.current.onFaildToLoadInterstitialAd -= InterstitialAdFaildToLoad;
-        EventManager.current.onCloseInterstitialAd -= DisplayLevelSummaryCanvas;
         EventManager.current.onGameOver -= DisplayReviveCanvas;
-        EventManager.current.onOpenRewardedAd -= RewardedAdOpen;
-        EventManager.current.onCloseRewardedAd -= RewardedAdClose;
         EventManager.current.onEndLevel -= DisplayLevelSummaryCanvas;
 
 
@@ -241,38 +228,5 @@ public class UIManager : MonoBehaviour
         pointer.DOShapeCircle(pointer.anchoredPosition, 360, 3, true).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         yield return null;
     }
-    #endregion
-
-    #region Ads
-
-    private void RewardedAdOpen()
-    {
-        SoundManager.Instance.StopPlayingSound();
-    }
-
-    private void RewardedAdClose()
-    {
-        AdManager.instance.RequestInterstitial();
-        AdManager.instance.RequestRewardAd();
-        AdManager.instance.ShowInterstitial();
-    }
-
-    private void InterstitialAdOpen()
-    {
-    
-    }
-
-    private void InterstitialAdClose()
-    {
-        DisplayLevelSummaryCanvas();
-        AdManager.instance.interstitial.Destroy();
-    }
-
-    private void InterstitialAdFaildToLoad()
-    {
-        DisplayLevelSummaryCanvas();
-        Debug.Log("Faild To Load Interstitia");
-    }
-
     #endregion
 }

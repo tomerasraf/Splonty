@@ -847,7 +847,8 @@ PrefabInstance:
       propertyPath: levelProgressPrecentege
       value: 
       objectReference: {fileID: 67669112}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3909608216881987758, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
 --- !u!1001 &5154006378279618616
 PrefabInstance:
