@@ -5,6 +5,9 @@ using UnityEngine;
 public class CleanerCollision : MonoBehaviour
 {
     [SerializeField] AudioClip missCLip;
+    [SerializeField] AudioClip comboBreaker;
+    [SerializeField] GameData _gameData;
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,9 +16,19 @@ public class CleanerCollision : MonoBehaviour
         }
 
         if (other.CompareTag("Red Shape") || other.CompareTag("Blue Shape") || other.CompareTag("Sheild Shape")) {
-            SoundManager.Instance.PlaySound(missCLip);
-            EventManager.current.ShapeMiss();
-            EventManager.current.Feedback(0);
+            if (_gameData.comboHits > 20) {
+                SoundManager.Instance.PlayOneShotSound(comboBreaker);
+                EventManager.current.ShapeMiss();
+                EventManager.current.Feedback(0);
+            }
+            else
+            {
+                SoundManager.Instance.PlaySound(missCLip);
+                EventManager.current.ShapeMiss();
+                EventManager.current.Feedback(0);
+            }
+
+            
         }
     }
 }

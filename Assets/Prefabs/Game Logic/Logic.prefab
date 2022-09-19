@@ -47,6 +47,14 @@ PrefabInstance:
       propertyPath: missCLip
       value: 
       objectReference: {fileID: 8300000, guid: 45ea4969c95a86a43a6cbb5bb4dd32cb, type: 3}
+    - target: {fileID: 8960015844694435820, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
+      propertyPath: _gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
+    - target: {fileID: 8960015844694435820, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
+      propertyPath: comboBreaker
+      value: 
+      objectReference: {fileID: 8300000, guid: dfa36760b8a638248ae5aaad2d2cdbdb, type: 3}
     - target: {fileID: 8960015844694435821, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
       propertyPath: m_RootOrder
       value: 0
