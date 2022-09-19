@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Pitch
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3909608216997969140, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: missChocker
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3909608217045365460, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
       propertyPath: levelSpeed
       value: 60
@@ -190,6 +194,10 @@ PrefabInstance:
       propertyPath: lightSaber
       value: 
       objectReference: {fileID: 45793439}
+    - target: {fileID: 3909608217045365460, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: endAmbience
+      value: 
+      objectReference: {fileID: 8300000, guid: c206baa088a06ec46a2b271323c9de48, type: 3}
     - target: {fileID: 3909608217045365460, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
       propertyPath: winner3DText
       value: 
@@ -226,6 +234,10 @@ PrefabInstance:
       propertyPath: gameData
       value: 
       objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
+    - target: {fileID: 3909608217990837494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
+      propertyPath: musicClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d96f319f3fd90d64fa6aa8ef66608d85, type: 3}
     - target: {fileID: 3909608217990837494, guid: baa2abb07355bc54e99b6aac530b7079, type: 3}
       propertyPath: levelTitle
       value: 

@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] Canvas menuCanvas;
     [SerializeField] TextMeshProUGUI levelTitle;
     [SerializeField] GameData gameData;
+    [SerializeField] AudioClip musicClip;
 
     private void Update()
     {
@@ -26,6 +27,7 @@ public class InputManager : MonoBehaviour
         {
             if (Input.touchCount > 0)
             {
+                SoundManager.Instance.playMusic(musicClip);
                 EventManager.current.StartGameTouch();
             }
         }

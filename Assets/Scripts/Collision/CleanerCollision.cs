@@ -17,13 +17,13 @@ public class CleanerCollision : MonoBehaviour
 
         if (other.CompareTag("Red Shape") || other.CompareTag("Blue Shape") || other.CompareTag("Sheild Shape")) {
             if (_gameData.comboHits > 20) {
-                SoundManager.Instance.PlayMissChocker(comboBreaker);
+                SoundManager.Instance.PlayOneShotSound(comboBreaker);
                 EventManager.current.ShapeMiss();
                 EventManager.current.Feedback(0);
             }
             else
             {
-                SoundManager.Instance.PlayOneShotSound(missCLip);
+                SoundManager.Instance.PlayMissChocker(missCLip);
                 EventManager.current.ShapeMiss();
                 EventManager.current.Feedback(0);
             }

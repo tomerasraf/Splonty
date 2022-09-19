@@ -5,9 +5,14 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
+    [Header("Audio Sources")]
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _effectSource;
 
+    [Header("Clips")]
+    [SerializeField] AudioClip ambienceStart;
+
+    [Header("Chockers")]
     [SerializeField] float chocker;
     [SerializeField] float missChocker;
 
@@ -26,7 +31,19 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void StopPlayingSound() {
+    private void Start()
+    {
+        playMusic(ambienceStart);
+    }
+
+    public void playMusic(AudioClip musicClip)
+    {
+        _musicSource.clip = musicClip;
+        _musicSource.Play();
+    }
+
+    public void StopPlayingSound()
+    {
         _effectSource.Stop();
         _musicSource.Stop();
     }
@@ -42,13 +59,16 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(SoundChocke(clip));
     }
 
-    public void PlayMissChocker(AudioClip clip) {
+    public void PlayMissChocker(AudioClip clip)
+    {
         StartCoroutine(MissChocke(clip));
     }
 
-    IEnumerator SoundChocke(AudioClip clip) {
+    IEnumerator SoundChocke(AudioClip clip)
+    {
 
-        if (!_isPlaying) {
+        if (!_isPlaying)
+        {
             _effectSource.PlayOneShot(clip);
         }
 

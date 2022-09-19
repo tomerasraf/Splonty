@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] AudioClip gameOverSound;
+    [SerializeField] AudioClip endAmbience;
 
 
     private void Awake()
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     private void EndLevel()
     {
+        SoundManager.Instance.playMusic(endAmbience);
         StopCoroutine(MoveLevel());
         StartCoroutine(FinishLine());
     }
