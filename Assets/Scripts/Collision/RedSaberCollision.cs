@@ -53,7 +53,7 @@ public class RedSaberCollision : MonoBehaviour
         if (other.CompareTag("Parallel Red Shape"))
         {
             int random = Random.Range(0, 3);
-            SoundManager.Instance.PlaySound(_clip[random]);
+            SoundManager.Instance.PlayOneShotSound(_clip[random]);
             Destroy(Instantiate(redExplostion, other.transform.position, Quaternion.identity), 2);
             Destroy(other.gameObject);
             EventManager.current.ShapeHit();
