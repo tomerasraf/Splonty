@@ -8,28 +8,6 @@ public class SaberController : MonoBehaviour
     [SerializeField] float smoothRotation;
     [SerializeField] LayerMask layer;
 
-    private float screenWidth;
-    Touch touch;
-    Vector3 startTouchPosition;
-    Vector3 currentTouchPosition;
-    Quaternion startRotation;
-    Quaternion endRotation;
-    float Xmagnitud;
-
-    private Camera myCam;
-    [SerializeField] float angleInDegrees;
-    Vector3 saberDiraction;
-    Vector3 touchPos;
-
-    Rigidbody rb;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        myCam = Camera.main;
-        screenWidth = Screen.width;
-    }
-
     private void Update()
     {
         PointToRotate();

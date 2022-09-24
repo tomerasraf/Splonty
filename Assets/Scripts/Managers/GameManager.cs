@@ -130,10 +130,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SetTimeScale()
     {
-
         while (true)
         {
-
             Time.timeScale = timeScale;
             yield return null;
         }

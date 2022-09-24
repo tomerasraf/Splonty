@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d5bc613ec2d5948bfc10bbb973c8ee, type: 3}
   m_Name: Game Data
   m_EditorClassIdentifier: 
+  Level: 1
   healthPoints: 100
-  currentLevelProgress: 1583321
-  fullLevelDistance: 1583321
+  currentLevelProgress: 3.1407034
+  fullLevelDistance: 1640706.8
   coins: 0
-  score: 0
+  score: 6600
   highestScore: 0
-  comboHits: 0
-  highestCombo: 67
-  gameplayTime: 14.73742
+  comboHits: 66
+  highestCombo: 102
+  gameplayTime: 35.838547

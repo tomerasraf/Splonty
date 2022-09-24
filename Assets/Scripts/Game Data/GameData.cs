@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "Game Data", menuName = "Data/Game Data", order = 0)]
 public class GameData : ScriptableObject
 {
     [Header("Player Data")]
-    public int Level = 0;
+    public int Level = 1;
     public float healthPoints = 0;
     public float currentLevelProgress = 0;
     public float fullLevelDistance = 0;
@@ -22,7 +23,9 @@ public class GameData : ScriptableObject
 
     public void ResetData()
     {
-        Level = 0;
+        if (SceneManager.GetActiveScene().buildIndex == 0) { 
+            Level = 1;
+        }
         healthPoints = 100;
         gameplayTime = 0;
         comboHits = 0;

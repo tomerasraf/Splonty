@@ -46,7 +46,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameData: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
   level1ParentObject: {fileID: 0}
+  winner3DText: {fileID: 0}
   lightSaber: {fileID: 0}
   endLevelCollider: {fileID: 0}
   levelSpeed: 50
   timeScale: 1
+  calebrationSFX:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gameOverSound: {fileID: 0}
+  endAmbience: {fileID: 8300000, guid: c206baa088a06ec46a2b271323c9de48, type: 3}

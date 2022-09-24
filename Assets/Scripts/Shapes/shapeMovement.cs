@@ -7,7 +7,11 @@ public class shapeMovement : MonoBehaviour
     [SerializeField] float offset;
     [SerializeField] float animationDuration;
 
-    private void Start()
+    private void OnEnable()
+    {
+        EventManager.current.onStartGameTouch += StartMove;
+    }
+    private void StartMove()
     {
         StartCoroutine(ShapeMoveFromSideToSide());   
     }

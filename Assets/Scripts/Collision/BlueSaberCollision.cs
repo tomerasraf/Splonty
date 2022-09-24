@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using DG.Tweening;
+using UnityEngine;
 
 public class BlueSaberCollision : MonoBehaviour
 {
@@ -16,15 +16,31 @@ public class BlueSaberCollision : MonoBehaviour
     [SerializeField] AudioClip missClip;
     [SerializeField] AudioClip comboBreaker;
 
+    [Header("Saber Renderer")]
+    [SerializeField] MeshRenderer saber;
+
+    [Header("Slashed Shapes")]
+    [SerializeField] GameObject blueSlashedShape;
+    [SerializeField] Transform slashedShapeParent;
+
+    Color startColor;
+    bool canFeedback = true;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Red Shape"))
         {
-            if (_gameData.comboHits > 20) {
+            if (_gameData.comboHits > 20)
+            {
                 SoundManager.Instance.PlayOneShotSound(comboBreaker);
                 EventManager.current.DamageHit();
                 EventManager.current.WrongShapeHit();
-                StartCoroutine(HitFeedback());
+
+                if (canFeedback)
+                {
+                    HitFeedbackBlue();
+                }
+
                 Destroy(other.gameObject);
             }
             else
@@ -32,7 +48,12 @@ public class BlueSaberCollision : MonoBehaviour
                 SoundManager.Instance.PlayOneShotSound(missClip);
                 EventManager.current.DamageHit();
                 EventManager.current.WrongShapeHit();
-                StartCoroutine(HitFeedback());
+
+                if (canFeedback)
+                {
+                    HitFeedbackBlue();
+                }
+
                 Destroy(other.gameObject);
             }
         }
@@ -46,6 +67,7 @@ public class BlueSaberCollision : MonoBehaviour
             EventManager.current.ShapeHit();
             EventManager.current.AddedScore(other.transform, _scoreData.colorShapePoints);
             EventManager.current.PlayerGetScore(_scoreData.colorShapePoints);
+            SlashBall(other);
         }
 
         if (other.CompareTag("Parallel Blue Shape"))
@@ -59,16 +81,37 @@ public class BlueSaberCollision : MonoBehaviour
         }
     }
 
-    IEnumerator HitFeedback()
+    void SlashBall(Collider other)
     {
-        Color startColor = transform.GetComponent<MeshRenderer>().materials[0].color;
+        GameObject slashedBall = Instantiate(blueSlashedShape, other.transform.position, Quaternion.identity, slashedShapeParent);
+        Transform half1 = slashedBall.transform.GetChild(0);
+        Transform half2 = slashedBall.transform.GetChild(1);
 
-        transform.GetComponent<MeshRenderer>().materials[0].color = Color.white;
 
-        yield return new WaitForSeconds(0.1f);
+        half1.GetComponent<Rigidbody>().AddForce(half1.forward * 100, ForceMode.Impulse);
+        half1.GetComponent<Rigidbody>().AddForce(half1.up * 25, ForceMode.Impulse);
+        half1.GetComponent<Rigidbody>().AddForce(half1.right * 40, ForceMode.Impulse);
+        half1.GetComponent<Rigidbody>().AddTorque(half1.right * 40, ForceMode.Impulse);
 
-        transform.GetComponent<MeshRenderer>().materials[0].color = startColor;
+        half2.GetComponent<Rigidbody>().AddForce(half2.forward * 100, ForceMode.Impulse);
+        half2.GetComponent<Rigidbody>().AddForce(half2.up * 25, ForceMode.Impulse);
+        half2.GetComponent<Rigidbody>().AddForce(-half2.right * 40, ForceMode.Impulse);
+        half2.GetComponent<Rigidbody>().AddTorque(-half1.right * 40, ForceMode.Impulse);
 
-        yield return null;
+        Destroy(slashedBall, 3f);
+    }
+
+    void HitFeedbackBlue()
+    {
+        canFeedback = false;
+        startColor = saber.material.color;
+        saber.material.DOColor(startColor, 0);
+        saber.material.DOColor(Color.white, 0.2f).OnComplete(() =>
+        {
+            saber.material.DOColor(startColor, 0.2f).OnComplete(() => { 
+                
+                canFeedback = true;
+            });
+        });
     }
 }

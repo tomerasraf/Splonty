@@ -43,10 +43,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cleaner
       objectReference: {fileID: 0}
+    - target: {fileID: 8960015844694435819, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
+      propertyPath: m_Size.x
+      value: 144.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960015844694435819, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
+      propertyPath: m_Size.y
+      value: 14.355967
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960015844694435819, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
+      propertyPath: m_Center.x
+      value: 0.08016968
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960015844694435819, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
+      propertyPath: m_Center.y
+      value: -1.5149717
+      objectReference: {fileID: 0}
     - target: {fileID: 8960015844694435820, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
       propertyPath: missCLip
       value: 
-      objectReference: {fileID: 8300000, guid: ae4a19143fe113a43b45dcd548f648f5, type: 3}
+      objectReference: {fileID: 8300000, guid: 28e4e3d053e152d41b5be90cf37e7d76, type: 3}
     - target: {fileID: 8960015844694435820, guid: cbf6856ac55665140aebea509c5c4a5f, type: 3}
       propertyPath: _gameData
       value: 

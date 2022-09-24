@@ -22,8 +22,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject reviveCanvas;
 
     [Header("Text")]
+    [SerializeField] TextMeshProUGUI levelTitle;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI comboText;
+    [SerializeField] TextMeshProUGUI summaryLevelTitle;
     [SerializeField] TextMeshProUGUI summaryScoreText;
     [SerializeField] TextMeshProUGUI summaryComboText;
     [SerializeField] TextMeshProUGUI levelProgressPrecentege;
@@ -39,17 +41,22 @@ public class UIManager : MonoBehaviour
     [Header("Parent Objects")]
     [SerializeField] GameObject dynamicAddScore;
 
+    bool canCalculateProgress;
+
     private void Start()
     {
+        canCalculateProgress = true;
+        levelTitle.text = $"Level {_gameData.Level.ToString()}";
         menuCanvas.SetActive(true);
         StartCoroutine(RotatePointer());
-        ProgressBarUpdater();
+       
     }
 
     #region Events
     private void OnEnable()
     {
         // Display UI Events
+        EventManager.current.onStartGameTouch += ProgressBarUpdater;
         EventManager.current.onStartGameTouch += UIDisplayOff;
         EventManager.current.onStartGameTouch += DisplayGameplayCanvas;
         EventManager.current.onDisplaySummery += DisplayLevelSummaryCanvas;
@@ -109,7 +116,7 @@ public class UIManager : MonoBehaviour
     IEnumerator ProgressBar()
     {
 
-        while (true)
+        while (canCalculateProgress)
         {
             progressBarFiller.fillAmount = Mathf.InverseLerp(_gameData.fullLevelDistance, 0f, _gameData.currentLevelProgress);
 
@@ -156,7 +163,9 @@ public class UIManager : MonoBehaviour
 
     private void DisplayLevelSummaryCanvas()
     {
+        gameplayCanvas.SetActive(false);
         levelSummaryCanvas.SetActive(true);
+        summaryLevelTitle.text = $"Level {_gameData.Level.ToString()} Completed";
     }
 
     private void DisplayGameplayCanvas()
@@ -174,6 +183,9 @@ public class UIManager : MonoBehaviour
     #region Level Summary
     private void LevelSummaryUIUpdater()
     {
+        canCalculateProgress = false;
+        levelProgressPrecentege.text = "100%";
+        progressBarFiller.fillAmount = 1;
         summaryScoreText.text = _gameData.score.ToString();
         summaryComboText.text = _gameData.highestCombo.ToString();
     }

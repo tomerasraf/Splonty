@@ -16,7 +16,8 @@ public class CleanerCollision : MonoBehaviour
         }
 
         if (other.CompareTag("Red Shape") || other.CompareTag("Blue Shape") || other.CompareTag("Sheild Shape")) {
-            if (_gameData.comboHits > 20) {
+            if (_gameData.comboHits > 20)
+            {
                 SoundManager.Instance.PlayOneShotSound(comboBreaker);
                 EventManager.current.ShapeMiss();
                 EventManager.current.Feedback(0);
@@ -27,8 +28,6 @@ public class CleanerCollision : MonoBehaviour
                 EventManager.current.ShapeMiss();
                 EventManager.current.Feedback(0);
             }
-
-            
         }
     }
 }

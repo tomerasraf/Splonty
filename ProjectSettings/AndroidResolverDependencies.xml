@@ -14,7 +14,6 @@
     <package>com.facebook.android:facebook-login:[14.1, 15)</package>
     <package>com.facebook.android:facebook-share:[14.1, 15)</package>
     <package>com.fyber:marketplace-sdk:8.2.0</package>
-    <package>com.google.android.gms:play-services-ads:21.1.0</package>
     <package>com.google.android.gms:play-services-ads-identifier:18.0.1</package>
     <package>com.google.android.gms:play-services-appset:16.0.2</package>
     <package>com.google.android.gms:play-services-base:18.1.0</package>
@@ -33,7 +32,6 @@
     <package>com.google.firebase:firebase-messaging-unity:9.3.0</package>
     <package>com.inmobi.monetization:inmobi-ads:10.0.8</package>
     <package>com.ironsource.adapters:adcolonyadapter:4.3.13</package>
-    <package>com.ironsource.adapters:admobadapter:4.3.30</package>
     <package>com.ironsource.adapters:applovinadapter:4.3.33</package>
     <package>com.ironsource.adapters:facebookadapter:4.3.37</package>
     <package>com.ironsource.adapters:fyberadapter:4.3.22</package>
@@ -62,8 +60,8 @@
     <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-messaging-unity/9.3.0/firebase-messaging-unity-9.3.0.pom</file>
   </files>
   <settings>
-    <setting name="androidAbis" value="arm64-v8a" />
-    <setting name="bundleId" value="com.Playtopia.Splonter" />
+    <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
+    <setting name="bundleId" value="com.Playtopia.SpaceBlader" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradlePropertiesTemplateEnabled" value="True" />

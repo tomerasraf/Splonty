@@ -177,7 +177,7 @@ MonoBehaviour:
   _musicSource: {fileID: 6779942741481020086}
   _effectSource: {fileID: 6779942739825495098}
   ambienceStart: {fileID: 8300000, guid: d448378acfd7c3c45a0c02a512408b19, type: 3}
-  chocker: 0.1
+  chocker: 0.065
   missChocker: 0.25
 --- !u!1 &6779942741481020088
 GameObject:

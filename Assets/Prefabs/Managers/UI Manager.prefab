@@ -52,14 +52,17 @@ MonoBehaviour:
   gameplayCanvas: {fileID: 0}
   levelSummaryCanvas: {fileID: 0}
   reviveCanvas: {fileID: 0}
+  levelTitle: {fileID: 0}
   scoreText: {fileID: 0}
   comboText: {fileID: 0}
   summaryScoreText: {fileID: 0}
   summaryComboText: {fileID: 0}
   levelProgressPrecentege: {fileID: 0}
+  addedScoreText: {fileID: 464701959796272840, guid: cf7195498c4a29e4cab50e7b68c99c1e, type: 3}
   healthBarFiller: {fileID: 0}
   progressBarFiller: {fileID: 0}
   images:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  dynamicAddScore: {fileID: 0}

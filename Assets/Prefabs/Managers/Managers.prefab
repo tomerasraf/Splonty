@@ -54,6 +54,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2444685872449575043, guid: 04835a0339658ff47ab9d17efaa1b33c, type: 3}
+      propertyPath: _gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
+    - target: {fileID: 2444685872449575043, guid: 04835a0339658ff47ab9d17efaa1b33c, type: 3}
       propertyPath: nextLevelButton
       value: 
       objectReference: {fileID: 0}
@@ -106,6 +110,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 247624468261cb44b9d8a497e8157ecd, type: 2}
     - target: {fileID: 2444685872449575053, guid: 04835a0339658ff47ab9d17efaa1b33c, type: 3}
+      propertyPath: musicClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d96f319f3fd90d64fa6aa8ef66608d85, type: 3}
+    - target: {fileID: 2444685872449575053, guid: 04835a0339658ff47ab9d17efaa1b33c, type: 3}
       propertyPath: menuCanvas
       value: 
       objectReference: {fileID: 0}
@@ -113,7 +121,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Input Manager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2444685872449575040, guid: 04835a0339658ff47ab9d17efaa1b33c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04835a0339658ff47ab9d17efaa1b33c, type: 3}
 --- !u!4 &3909608217990837495 stripped
 Transform:
@@ -185,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1aa4dadb53149ae468bd571d0e6ae2c3, type: 2}
     - target: {fileID: 1368346858185318106, guid: d743103409950c5458208b1d1809d7f1, type: 3}
       propertyPath: levelSpeed
-      value: 50
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1368346858185318106, guid: d743103409950c5458208b1d1809d7f1, type: 3}
       propertyPath: lightSaber

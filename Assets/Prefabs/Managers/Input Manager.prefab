@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2444685872449575053}
   - component: {fileID: 2444685872449575042}
   - component: {fileID: 2444685872449575043}
-  - component: {fileID: 2444685872449575040}
   m_Layer: 0
   m_Name: Input Manager
   m_TagString: Untagged
@@ -48,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuCanvas: {fileID: 0}
+  levelTitle: {fileID: 0}
+  gameData: {fileID: 0}
+  musicClip: {fileID: 0}
 --- !u!114 &2444685872449575042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,17 +76,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5d4dbc8c869ca40a22000360491996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameData: {fileID: 0}
   nextLevelButton: {fileID: 0}
---- !u!114 &2444685872449575040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2444685872449575055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7057c50844026e34cb93bac070909848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rewardButton: {fileID: 0}

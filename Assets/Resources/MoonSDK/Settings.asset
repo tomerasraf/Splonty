@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c151705efef5748b9a8ff640aafdf0, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  Firebase: 0
+  int_grace_time: 0
+  int_grace_level: 0
+  cooldown_between_INTs: 0
+  cooldown_after_RVs: 0
+  Show_int_if_fail: 0
+  INT_in_stage: 0
+  GameAnalytics: 1
+  gameAnalyticsIosGameKey: 
+  gameAnalyticsIosSecretKey: 
+  gameAnalyticsAndroidGameKey: 3406348518b63d54ed93ebebdc2a46bf
+  gameAnalyticsAndroidSecretKey: d709ea1e1d662a3c299a9b19495e2ef70c5e10c5
+  Facebook: 1
+  facebookAppId: 5595191047203662
+  facebookClientId: 8c7c7de7001a5f1d7ad8f1dfdfe95e68
+  Adjust: 0
+  adjustToken: 
+  adjustIAPRevenueToken: 
+  IronSource: 0
+  ironSourceIOSAppKey: 
+  ironSourceAndroidAppKey: 
+  adMobIOSAppKey: 
+  adMobAndroidAppKey: 
+  GDPR: 0
+  appIcon: {fileID: 0}
+  StudioLogo: 0
+  studioLogoSprite: {fileID: 0}
