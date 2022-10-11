@@ -19,10 +19,20 @@ public class EditorManager : MonoBehaviour
     [SerializeField] Button blueButton;
     [SerializeField] Button redButton;
 
+    [Header("Vars")]
+    [SerializeField] float barLengthByMeter;
+    [SerializeField] int bars;
+
+    [Header("Utils")]
+    [SerializeField] GameObject barPrefab;
+    [SerializeField] Transform startingBarPosition;
+
     // ture = blue false = red
     bool SpawnBlueOrRed;
     bool isMouseOnSlot;
     bool isMouseOnShape;
+
+    Vector3 lineOriginPosition;
 
     GameObject transparentClone;
 
@@ -39,13 +49,29 @@ public class EditorManager : MonoBehaviour
         });
     }
 
-    private void Update()
+    private void Start()
     {
-        MouseEditor();
-
+        InitializeBars();
     }
 
-    private void MouseEditor()
+    private void Update()
+    {
+        EditorLogic();
+    }
+
+    void InitializeBars() {
+
+        lineOriginPosition = startingBarPosition.position;
+       
+        for (int i = 0; i < bars; i++)
+        {
+            float nextLineZPos = lineOriginPosition.z + (barLengthByMeter * i);
+            Instantiate(barPrefab, new Vector3(0,4.71f, nextLineZPos),Quaternion.Euler(0,0,90));
+        }
+        
+    }
+
+    private void EditorLogic()
     {
         // Geting the position of the finger on the screen.
         Vector3 mousePos = Input.mousePosition;
