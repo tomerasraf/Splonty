@@ -15,7 +15,6 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        MoonSDK.TrackLevelEvents(MoonSDK.LevelEvents.Start, gameData.Level);
         levelTitle.text = $"Level {gameData.Level.ToString()}"; 
     }
 

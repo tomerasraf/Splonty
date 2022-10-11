@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1505724969799542959}
   - component: {fileID: 493226391297884450}
   - component: {fileID: 1744378800029259775}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 924201905821712133}
   - component: {fileID: 1880642591697173387}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Blue Shape
   m_TagString: Blue Shape
   m_Icon: {fileID: 0}

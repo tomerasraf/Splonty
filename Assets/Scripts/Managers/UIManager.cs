@@ -165,7 +165,9 @@ public class UIManager : MonoBehaviour
     {
         gameplayCanvas.SetActive(false);
         levelSummaryCanvas.SetActive(true);
+        if (summaryLevelTitle != null) { 
         summaryLevelTitle.text = $"Level {_gameData.Level.ToString()} Completed";
+        }
     }
 
     private void DisplayGameplayCanvas()

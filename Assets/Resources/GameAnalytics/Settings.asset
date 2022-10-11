@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f78192cec1344d83a177ac5e6139ab3, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Settings
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp:GameAnalyticsSDK.Setup:Settings
   TotalMessagesSubmitted: 0
   TotalMessagesFailed: 0
   DesignMessagesSubmitted: 0
@@ -35,17 +35,15 @@ MonoBehaviour:
   SelectedOrganization: 
   SelectedStudio: 
   SelectedGame: 
-  NewVersion: 7.3.24
-  Changes: '7.3.24
-
-    - fixed fps script for when pausing game'
-  SignUpOpen: 0
+  NewVersion: 
+  Changes: 
+  SignUpOpen: 1
   StudioName: 
   GameName: 
   OrganizationName: 
   OrganizationIdentifier: 
-  EmailGA: igor.p@moonee.io
-  IntroScreen: 0
+  EmailGA: 
+  IntroScreen: 1
   InfoLogEditor: 1
   InfoLogBuild: 1
   VerboseLogBuild: 0
@@ -59,7 +57,7 @@ MonoBehaviour:
   ResourceCurrencies: []
   LastCreatedGamePlatform: 0
   Platforms: 
-  CurrentInspectorState: 3
+  CurrentInspectorState: 0
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
