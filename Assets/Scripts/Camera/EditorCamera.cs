@@ -10,8 +10,10 @@ public class EditorCamera : MonoBehaviour
     [SerializeField] float maxFov = 90f;
     [SerializeField] float sensitivity = 10f;
 
-    private Vector3 dragOrigin;
+    [Header("Refereces")]
+    [SerializeField] EditorManager _editorManager; 
 
+    private Vector3 dragOrigin;
 
     void Update()
     {
@@ -28,18 +30,30 @@ public class EditorCamera : MonoBehaviour
 
      void DragCamera()
     {
+        if (_editorManager.onSlot) { return; }
+
         if (Input.GetMouseButtonDown(0))
         {
             dragOrigin = Input.mousePosition;
             return;
         }
+        float mouseYPos = Input.GetAxis("Mouse Y");
 
-        if (!Input.GetMouseButton(0)) return;
+        if (Input.GetMouseButton(0) && mouseYPos != 0 && Input.GetKey(KeyCode.LeftControl)) {
 
-        Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
+            Debug.Log(mouseYPos + " Mouse Y Pos");
+           
 
-        Vector3 move = new Vector3(pos.x * dragSpeed, 0, pos.y * dragSpeed);
+            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
+            Debug.Log(pos.y + " Mouse Y Pos with screen viewport");
+            Vector3 move = new Vector3(0, 0, pos.y * dragSpeed);
 
-        transform.Translate(move, Space.World);
+            transform.Translate(-move, Space.World);
+            Debug.Log(move + "Move vector");
+        };
+
+
+
+       
     }
 }
