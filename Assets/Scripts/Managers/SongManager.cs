@@ -36,6 +36,7 @@ public class SongManager : MonoBehaviour
     }
 
     IEnumerator PlaySound() {
+        yield return new WaitForSeconds(0.2f);
 
         while (true)
         {

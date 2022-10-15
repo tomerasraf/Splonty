@@ -102,6 +102,8 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator MoveLevel()
     {
+        yield return new WaitForSeconds(0.2f);
+
         while (_gameData.currentLevelProgress > 4)
         {
             level1ParentObject.transform.position = new Vector3(
