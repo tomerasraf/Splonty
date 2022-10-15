@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EditorCamera : MonoBehaviour
@@ -11,7 +9,7 @@ public class EditorCamera : MonoBehaviour
     [SerializeField] float sensitivity = 10f;
 
     [Header("Refereces")]
-    [SerializeField] EditorManager _editorManager; 
+    [SerializeField] EditorManager _editorManager;
 
     private Vector3 dragOrigin;
 
@@ -21,14 +19,15 @@ public class EditorCamera : MonoBehaviour
         DragCamera();
     }
 
-    void ZoomControl() {
+    void ZoomControl()
+    {
         float fov = Camera.main.fieldOfView;
         fov += Input.GetAxis("Mouse ScrollWheel") * -sensitivity;
         fov = Mathf.Clamp(fov, minFov, maxFov);
         Camera.main.fieldOfView = fov;
-    } 
+    }
 
-     void DragCamera()
+    void DragCamera()
     {
         if (_editorManager.onSlot) { return; }
 
@@ -39,21 +38,17 @@ public class EditorCamera : MonoBehaviour
         }
         float mouseYPos = Input.GetAxis("Mouse Y");
 
-        if (Input.GetMouseButton(0) && mouseYPos != 0 && Input.GetKey(KeyCode.LeftControl)) {
-
-            Debug.Log(mouseYPos + " Mouse Y Pos");
-           
-
+        if (Input.GetMouseButton(0) && mouseYPos != 0 && Input.GetKey(KeyCode.LeftControl))
+        {
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-            Debug.Log(pos.y + " Mouse Y Pos with screen viewport");
+
             Vector3 move = new Vector3(0, 0, pos.y * dragSpeed);
 
             transform.Translate(-move, Space.World);
-            Debug.Log(move + "Move vector");
         };
 
 
 
-       
+
     }
 }

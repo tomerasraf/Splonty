@@ -2,6 +2,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using UnityEditor;
 
 public class EditorManager : MonoBehaviour
 {
@@ -26,14 +28,21 @@ public class EditorManager : MonoBehaviour
     [SerializeField] Button blueButton;
     [SerializeField] Button redButton;
     [SerializeField] Button sprayModeButton;
+    [SerializeField] Button tripletButton;
+    [SerializeField] Button addBarsButton;
+    [SerializeField] Button subtractBarsButton;
+    [SerializeField] Button saveLevelButton;
     [SerializeField] TMP_Dropdown timeSigDropdown;
     [SerializeField] TMP_Dropdown timeDivisionDropdown;
+    [SerializeField] TMP_InputField barInput;
 
     [Header("Vars")]
     float barLengthByMeter;
     int timeSig;
     int timeDivision;
+    float tripletGrid = 1;
     float beatCopy;
+    bool tripletIsOn = false;
     [SerializeField] float beatLengthByMeter;
     [SerializeField] int bars;
 
@@ -42,6 +51,9 @@ public class EditorManager : MonoBehaviour
     [SerializeField] GameObject divisionBarPrefab;
     [SerializeField] GameObject barNumTextPrefab;
     [SerializeField] Transform startingBarPosition;
+    [SerializeField] GameObject curLevel;
+
+   
 
     [HideInInspector] public bool onSlot;
 
@@ -54,6 +66,11 @@ public class EditorManager : MonoBehaviour
 
     private void OnEnable()
     {
+        saveLevelButton.onClick.AddListener(() =>
+        {
+            SaveLevelToNewPrefab();
+        });
+
         timeDivisionDropdown.onValueChanged.AddListener(delegate
         {
             CleanGrid();
@@ -67,6 +84,47 @@ public class EditorManager : MonoBehaviour
             InitializeTimeSig();
             InitializeBars();
 
+        });
+
+        tripletButton.onClick.AddListener(() =>
+        {
+            tripletIsOn = !tripletIsOn;
+
+            if (tripletIsOn) {
+                tripletGrid = 0.666f;   
+            }
+            else
+            {
+                tripletGrid = 1;
+            }
+            Debug.Log(tripletGrid);
+            CleanGrid();
+            InitializeTimeDivision();
+            InitializeBars();
+        });
+
+        addBarsButton.onClick.AddListener(() =>
+        {
+            if (barInput.text == "") { return; }
+
+            bars += int.Parse(barInput.text);
+            CleanGrid();
+            InitializeTimeDivision();
+            InitializeBars();
+
+            Debug.Log(bars);
+        });
+
+        subtractBarsButton.onClick.AddListener(() =>
+        {
+            if (barInput.text == "" ) { return; }
+
+            bars -= int.Parse(barInput.text);
+
+            CleanGrid();
+            InitializeTimeDivision();
+            InitializeBars();
+            Debug.Log(bars);
         });
 
         blueButton.onClick.AddListener(() =>
@@ -100,6 +158,22 @@ public class EditorManager : MonoBehaviour
         EditorInputControl();
     }
 
+    private void SaveLevelToNewPrefab() {
+        string localPath = "Assets/Prefabs/Levels/" + curLevel.name + ".prefab";
+
+        localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
+
+        bool prefabSuccess;
+        PrefabUtility.SaveAsPrefabAsset(curLevel, localPath, out prefabSuccess);
+        if (prefabSuccess == true) {
+            Debug.Log("Prefab was saved successfully");
+        }
+        else
+        {
+            Debug.Log("Prefab falid to save" + prefabSuccess);
+        }
+    }
+
     private void CleanGrid()
     {
         foreach (Transform child in barLines.transform)
@@ -123,7 +197,7 @@ public class EditorManager : MonoBehaviour
     {
         string valueText = timeDivisionDropdown.options[timeDivisionDropdown.value].text;
         timeDivision = int.Parse(valueText) / 4;
-        beatCopy = beatLengthByMeter / timeDivision;
+        beatCopy = beatLengthByMeter / timeDivision * tripletGrid;
     }
 
     void InitializeBars()
@@ -142,7 +216,7 @@ public class EditorManager : MonoBehaviour
 
             float currentLine = bar.transform.position.z + beatCopy;
 
-            for (int y = 0; y < (timeSig * timeDivision) - 1; y++)
+            for (int y = 0; y < (Mathf.RoundToInt((timeSig * timeDivision / tripletGrid) - 1)) ; y++)
             {
                 GameObject divisionBar = Instantiate(divisionBarPrefab, new Vector3(0, 4.71f, currentLine), Quaternion.Euler(0, 0, 90), barLines.transform);
                 GameObject divisionIndex = Instantiate(barNumTextPrefab, divisionBar.transform.position - Vector3.right * 15, Quaternion.Euler(90, 0, 0), barLines.transform);
@@ -212,6 +286,34 @@ public class EditorManager : MonoBehaviour
         {
             Destroy(hitShape.transform.gameObject);
         }
+
+        bool key1Press = Input.GetKey(KeyCode.Alpha1);
+        bool key2Press = Input.GetKey(KeyCode.Alpha2);
+        bool key3Press = Input.GetKeyDown(KeyCode.Alpha3);
+        bool keyShiftPress = Input.GetKey(KeyCode.LeftShift);
+        bool keyAltPress = Input.GetKey(KeyCode.LeftAlt);
+
+        if (key1Press) {
+            SpawnBlueOrRed = true;
+        }
+        if (key2Press) {
+            SpawnBlueOrRed = false;
+        }
+
+        if (keyShiftPress && key1Press) {
+            timeDivisionDropdown.value = 0; 
+        }
+        if (keyShiftPress && key2Press) {
+            timeDivisionDropdown.value = 1;
+        } 
+        if (keyShiftPress && key3Press) {
+            timeDivisionDropdown.value = 2;
+        }
+        if (keyAltPress && key3Press) {
+            tripletButton.onClick.Invoke();
+        }
+
+
     }
 
     IEnumerator DealyDrag()
