@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform endLevelCollider;
 
     [Header("Vars")]
-    [SerializeField] float levelSpeed;
+    [HideInInspector] public float levelSpeed;
     [SerializeField] float timeScale;
 
     [Header("Effects")]
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
+        //float firstBeatToPlayer = level1ParentObject.transform.GetChild(0).position.z - lightSaber.transform.position.z;
         StartCoroutine(MoveLevel());
         StartCoroutine(CountGameTime());
         StartCoroutine(LevelProgress());
