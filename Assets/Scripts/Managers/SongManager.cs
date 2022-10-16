@@ -25,11 +25,9 @@ public class SongManager : MonoBehaviour
     {
         beatLengthPerSecond = 60 / bpm;
         _gameManager.levelSpeed = beatByMeter / beatLengthPerSecond;
-        Debug.Log(beatByMeter);
-        Debug.Log(beatLengthPerSecond);
-        Debug.Log(bpm);
-        Debug.Log(_gameManager.levelSpeed);
     }
+
+  
 
     private void Fart() {
         StartCoroutine(PlaySound());

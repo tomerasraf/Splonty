@@ -9,19 +9,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameData _gameData;
 
     [Header("Objects")]
-    [SerializeField] GameObject level1ParentObject;
-    [SerializeField] GameObject winner3DText;
+    GameObject level1ParentObject;
+    GameObject winner3DText;
 
     [Header("Transforms")]
     [SerializeField] Transform lightSaber;
-    [SerializeField] Transform endLevelCollider;
+    Transform endLevelCollider;
 
     [Header("Vars")]
     [HideInInspector] public float levelSpeed;
     [SerializeField] float timeScale;
 
     [Header("Effects")]
-    [SerializeField] GameObject[] calebrationSFX;
+    GameObject[] calebrationSFX;
 
     [Header("Sounds")]
     [SerializeField] AudioClip gameOverSound;
@@ -30,13 +30,28 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        InitializeLevel();
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 120;
     }
 
+    private void InitializeLevel()
+    {
+        level1ParentObject = GameObject.FindGameObjectWithTag("Level");
+        endLevelCollider = GameObject.FindGameObjectWithTag("End Level").transform;
+        calebrationSFX = GameObject.FindGameObjectsWithTag("Fireworks");
+        winner3DText = GameObject.FindGameObjectWithTag("3D Text");
+
+        level1ParentObject.transform.position = new Vector3(
+        level1ParentObject.transform.position.x,
+        -4.71f,
+        level1ParentObject.transform.position.z);
+    }
+
     private void StartGame()
     {
-        //float firstBeatToPlayer = level1ParentObject.transform.GetChild(0).position.z - lightSaber.transform.position.z;
+        /*float firstBeatToPlayer = level1ParentObject.transform.GetChild(0).position.z - lightSaber.transform.position.z;
+        Debug.Log(firstBeatToPlayer);*/
         StartCoroutine(MoveLevel());
         StartCoroutine(CountGameTime());
         StartCoroutine(LevelProgress());
@@ -56,6 +71,7 @@ public class GameManager : MonoBehaviour
         StopCoroutine(MoveLevel());
         StartCoroutine(FinishLine());
     }
+
 
     IEnumerator FinishLine()
     {
@@ -102,14 +118,16 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator MoveLevel()
     {
-        yield return new WaitForSeconds(0.2f);
+        _gameData.currentLevelProgress = _gameData.fullLevelDistance;
 
         while (_gameData.currentLevelProgress > 4)
         {
+
             level1ParentObject.transform.position = new Vector3(
                 level1ParentObject.transform.position.x,
                 level1ParentObject.transform.position.y,
                 level1ParentObject.transform.position.z - levelSpeed * Time.deltaTime);
+
             yield return null;
         }
     }

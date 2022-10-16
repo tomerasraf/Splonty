@@ -18,6 +18,9 @@ TagManager:
   - End Level
   - Parallel Blue Shape
   - Parallel Red Shape
+  - Level
+  - 3D Text
+  - Fireworks
   layers:
   - Default
   - TransparentFX
