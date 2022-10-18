@@ -23,6 +23,7 @@ public class SongManager : MonoBehaviour
 
     private void Start()
     {
+        bpmSound.clip = bpmSoundClip;
         beatLengthPerSecond = 60 / bpm;
         _gameManager.levelSpeed = beatByMeter / beatLengthPerSecond;
     }
@@ -34,14 +35,11 @@ public class SongManager : MonoBehaviour
     }
 
     IEnumerator PlaySound() {
-        yield return new WaitForSeconds(0.2f);
 
         while (true)
         {
-            yield return new WaitForSeconds(beatLengthPerSecond);
-
-            bpmSound.clip = bpmSoundClip;
             bpmSound.Play();
+            yield return new WaitForSeconds(beatLengthPerSecond);
         }
     }
 }

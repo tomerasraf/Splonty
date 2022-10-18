@@ -204,6 +204,10 @@ public class EditorManager : MonoBehaviour
     {
         lineOriginPosition = startingBarPosition.position;
 
+       GameObject firstBarLine = Instantiate(barPrefab, new Vector3(0, 1, lineOriginPosition.z), Quaternion.Euler(0, 0, 90), level.transform);
+        foreach (Transform child in firstBarLine.transform) {
+            Destroy(child.gameObject);
+          }
         for (int i = 0; i < bars; i++)
         {
             float nextLineZPos = lineOriginPosition.z + (barLengthByMeter * i);
