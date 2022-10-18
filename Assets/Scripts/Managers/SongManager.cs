@@ -16,23 +16,23 @@ public class SongManager : MonoBehaviour
     [Header("Script References")]
     [SerializeField] GameManager _gameManager;
 
-    private void OnEnable()
-    {
-        EventManager.current.onStartGameTouch += Fart;
-    }
+    /* private void OnEnable()
+     {
+         EventManager.current.onStartGameTouch += Fart;
+     }*/
 
     private void Start()
-    {
-        bpmSound.clip = bpmSoundClip;
-        beatLengthPerSecond = 60 / bpm;
-        _gameManager.levelSpeed = beatByMeter / beatLengthPerSecond;
-    }
+     {
+         bpmSound.clip = bpmSoundClip;
+         beatLengthPerSecond = 60 / bpm;
+         _gameManager.levelSpeed = beatByMeter / beatLengthPerSecond;
+     }
 
-  
 
-    private void Fart() {
-        StartCoroutine(PlaySound());
-    }
+
+    /* private void Fart() {
+         StartCoroutine(PlaySound());
+     }
 
     IEnumerator PlaySound() {
 
@@ -41,5 +41,5 @@ public class SongManager : MonoBehaviour
             bpmSound.Play();
             yield return new WaitForSeconds(beatLengthPerSecond);
         }
-    }
+    }*/
 }

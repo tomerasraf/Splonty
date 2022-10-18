@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
     {
         /*float firstBeatToPlayer = level1ParentObject.transform.GetChild(0).position.z - lightSaber.transform.position.z;
         Debug.Log(firstBeatToPlayer);*/
+        float firstBeat = GameObject.FindGameObjectWithTag("SyncLines").transform.position.z - GameObject.FindGameObjectWithTag("SaberLine").transform.position.z;
+        Debug.Log(firstBeat);
         StartCoroutine(MoveLevel());
         StartCoroutine(CountGameTime());
         StartCoroutine(LevelProgress());

@@ -21,6 +21,8 @@ TagManager:
   - Level
   - 3D Text
   - Fireworks
+  - SyncLines
+  - SaberLine
   layers:
   - Default
   - TransparentFX
